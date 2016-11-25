@@ -53,7 +53,7 @@ export default {
   }
 };
 </script>
-<style lang="less">
+<style lang="less" rel="stylesheet/less" type="less">
 @import 'init.less';
 @import 'transition.less';
 </style>

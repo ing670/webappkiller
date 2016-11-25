@@ -21,7 +21,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" rel="stylesheet/less" type="less">
 .qlc-badge{
   height: .32rem;
   line-height: .32rem;

@@ -60,7 +60,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" rel="stylesheet/less" type="less" >
 @import "../utils/_vars.less";
 @import "../utils/_mixins.less";
 .vc-action-sheet{
