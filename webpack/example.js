@@ -70,6 +70,12 @@ module.exports = {
           loader: 'less-loader!postcss-loader',
         }),
       },
+        // {
+        //     test: /\.scss/,
+        //     loader: ExtractTextPlugin.extract({
+        //         loader: 'scss-loader!postcss-loader',
+        //     }),
+        // },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
