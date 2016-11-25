@@ -1,0 +1,95 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "alloytouch",
+        "scope": null,
+        "escapedName": "alloytouch",
+        "name": "alloytouch",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/Users/liuqingling/vue2-components"
+    ]
+  ],
+  "_cnpm_publish_time": 1464217296227,
+  "_from": "alloytouch@latest",
+  "_id": "alloytouch@0.1.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/alloytouch",
+  "_nodeVersion": "4.4.0",
+  "_npmOperationalInternal": {
+    "host": "packages-16-east.internal.npmjs.com",
+    "tmp": "tmp/alloytouch-0.1.0.tgz_1464217293369_0.4538324575405568"
+  },
+  "_npmUser": {
+    "name": "dntzhang",
+    "email": "mhtml5@qq.com"
+  },
+  "_npmVersion": "2.14.20",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "alloytouch",
+    "scope": null,
+    "escapedName": "alloytouch",
+    "name": "alloytouch",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npm.taobao.org/alloytouch/download/alloytouch-0.1.0.tgz",
+  "_shasum": "34460ddd70628093954ee3cb979405c7567504cc",
+  "_shrinkwrap": null,
+  "_spec": "alloytouch",
+  "_where": "/Users/liuqingling/vue2-components",
+  "author": {
+    "name": "dntzhang"
+  },
+  "bugs": {
+    "url": "https://github.com/AlloyTeam/Alloytouch/issues"
+  },
+  "dependencies": {},
+  "description": "60FPS的触摸运动",
+  "devDependencies": {},
+  "directories": {
+    "example": "example"
+  },
+  "dist": {
+    "shasum": "34460ddd70628093954ee3cb979405c7567504cc",
+    "size": 183024,
+    "noattachment": false,
+    "tarball": "http://registry.npm.taobao.org/alloytouch/download/alloytouch-0.1.0.tgz"
+  },
+  "gitHead": "280af001bb46e39f44d84910762b78fc249e1319",
+  "homepage": "https://github.com/AlloyTeam/Alloytouch#readme",
+  "keywords": [
+    "touch",
+    "scroll",
+    "smooth"
+  ],
+  "license": "MIT",
+  "main": "alloy_touch.css.js",
+  "maintainers": [
+    {
+      "name": "dntzhang",
+      "email": "mhtml5@qq.com"
+    }
+  ],
+  "name": "alloytouch",
+  "optionalDependencies": {},
+  "publish_time": 1464217296227,
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlloyTeam/Alloytouch.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.1.0"
+}

@@ -1,0 +1,63 @@
+@import "animate";
+/*  slide-fade-in */
+.slide-fade-in-enter-active {
+  transition: all .5s ease;
+}
+.slide-fade-in-leave-active {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+  transition: all .5s ease;
+}
+.slide-fade-in-enter{
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
+}
+.slide-fade-out-enter-active {
+  transition: all .5s ease;
+}
+.slide-fade-out-leave-active {
+  transition: all .5s ease;
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
+}
+.slide-fade-out-enter {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+/*  slide-in */
+
+.slide-in-enter-active {
+   .animated;
+   .slideInLeft;
+}
+.slide-in-leave-active {
+   .animated;
+   .slideOutRight
+}
+.slide-out-enter-active {
+   .animated;
+   .slideInRight;
+}
+.slide-out-leave-active {
+   .animated;
+   .slideOutLeft;
+}
+/*  slide-fade-in */
+
+.slide-zoom-in-enter-active {
+   .animated;
+   .zoomInLeft;
+}
+.slide-zoom-in-leave-active {
+   .animated;
+   .zoomOutLeft;
+}
+.slide-zoom-out-enter-active {
+   .animated;
+   .zoomInRight;
+}
+.slide-zoom-out-leave-active {
+   .animated;
+   .zoomOutRight;
+}
+
