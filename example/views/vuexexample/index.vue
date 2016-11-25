@@ -14,7 +14,7 @@
     <Button ref="button"></Button>
   </div>
 </template>
-<style lang="scss">
+<style lang="less">
 
 </style>
 <script>

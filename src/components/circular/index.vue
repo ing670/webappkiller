@@ -33,12 +33,12 @@ export default {
 }
 </script>
 
-<style lang="scss">
-$carbon: #7e848c;
-$red: #ff5252;
-$green: #4caf50;
-$amber: #ffc107;
-$blue: #2196f3;
+<style lang="less">
+@carbon: #7e848c;
+@red: #ff5252;
+@green: #4caf50;
+@amber: #ffc107;
+@blue: #2196f3;
 .preloader-wrapper {
   display: inline-block;
   vertical-align: middle;
@@ -69,7 +69,7 @@ $blue: #2196f3;
   position: absolute;
   width: 100%;
   height: 100%;
-  border-color: $red;
+  border-color: @red;
   opacity: 1;
   -webkit-animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
   animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
@@ -79,19 +79,19 @@ $blue: #2196f3;
   border-color: #FFF;
 }
 .spinner-carbon{
-  border-color: $carbon;
+  border-color: @carbon;
 }
 .spinner-red{
-  border-color: $red;
+  border-color: @red;
 }
 .spinner-green{
-  border-color: $green;
+  border-color: @green;
 }
 .spinner-amber{
-  border-color: $amber;
+  border-color: @amber;
 }
 .spinner-blue{
-  border-color: $blue;
+  border-color: @blue;
 }
 
 .circle-clipper {

@@ -77,7 +77,7 @@
 
   </div>
 </template>
-<style lang="scss">
+<style lang="less">
   .icon-container {
     padding-left: .30rem;
     padding-right: .30rem;

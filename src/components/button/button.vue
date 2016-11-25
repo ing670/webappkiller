@@ -56,7 +56,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="less">
 .qlc-button {
   color: #fff;
   border-radius: .04rem;

@@ -35,7 +35,7 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style lang="less">
   .icon-text-page-top{
     span{
       &:first-child{

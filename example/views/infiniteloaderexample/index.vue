@@ -7,7 +7,7 @@
     </InfiniteLoader>
   </div>
 </template>
-<style lang="scss">
+<style lang="less">
   .page {
     overflow-y: hidden;
   }

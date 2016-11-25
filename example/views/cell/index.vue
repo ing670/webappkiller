@@ -21,7 +21,7 @@
     },
   };
 </script>
-<style lang="scss">
+<style lang="less">
   .cell-group {
     margin-top: 1rem;
   }

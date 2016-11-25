@@ -70,7 +70,7 @@ export default {
 
 </script>
 
-<style lang="scss">
+<style lang="less">
   .vc-infinite-scroll {
     position: absolute;
     top:0;

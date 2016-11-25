@@ -127,7 +127,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="less">
 
 .vc-ripple-ink {
   position: relative;

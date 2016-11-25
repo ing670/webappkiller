@@ -15,7 +15,7 @@
     </div>
   </div>
 </template>
-<style lang="scss">
+<style lang="less">
   .list-page {
     .list-header {
       width: 100%;

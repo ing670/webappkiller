@@ -2,7 +2,7 @@
     <span :class="classs"  v-html="fCode"  @click="$emit('click',this)" :style="{'font-size': size ,'color':iconColor,'font-family':fontFamily}">
     </span>
 </template>
-<style lang="scss">
+<style lang="less">
   .icon {
     display: inline-block;
     speak: none;

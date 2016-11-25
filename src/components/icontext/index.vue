@@ -62,7 +62,7 @@
     },
   };
 </script>
-<style lang="scss">
+<style lang="less">
   .icontext {
     display: block;
     text-align: center;

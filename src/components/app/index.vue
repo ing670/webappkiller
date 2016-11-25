@@ -54,6 +54,6 @@ export default {
 };
 </script>
 <style lang="less">
-@import 'init';
-@import 'transition';
+@import 'init.less';
+@import 'transition.less';
 </style>

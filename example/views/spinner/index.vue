@@ -119,7 +119,7 @@
 </div>
 </template>
 
-<style lang="scss">
+<style lang="less">
 @import '~loaders.css';
 
 .loaders{
