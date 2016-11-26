@@ -25,8 +25,10 @@
         -webkit-overflow-scrolling: touch;
         justify-content: space-between;
         .wk-header, .wk-footer {
+
         }
         .wk-content {
+            position: relative;
             flex: 1;
             overflow-y: scroll;;
         }

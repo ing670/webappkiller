@@ -2,17 +2,15 @@
   <div>
   <div class="downmemu-wraper">
     <div class="left">
-      <icon-text @wholeClick="leftClick" textColor="#969696" fontFamily="icomoon" iconSize=".26rem"
-                 iconColor="#ddd"
-                 iconFontCode="E90E" text="我提交的" position="right"></icon-text>
+      <icon-text @click="leftClick"  fontFamily="icomoon"
+                 fontCode="E90D" text="我提交的" position="right"></icon-text>
     </div>
-    <div>
-      <icon-text @wholeClick="rightClick" textColor="#969696" fontFamily="icomoon" iconSize=".26rem"
-                 iconColor="#ddd"
-                 iconFontCode="E90E" text="全部日志" position="right"></icon-text>
+    <div class="right">
+      <icon-text @click="rightClick"  fontFamily="icomoon"
+                 fontCode="E90D" text="全部日志" position="right"></icon-text>
     </div>
   </div>
-  <OverLay class="index-overlay" v-show='showOverlay' ref="overlay" @click.native="showOverlay=false">
+  <OverLay class="index-overlay" v-show='showOverlay' ref="overlay" @click="showOverlay=false">
     <div class="select-left-list" v-show='showLeftMenu'>
       <div class="selected-item">所有的</div>
       <div class="selected-item">我提交的</div>
@@ -26,7 +24,8 @@
   </OverLay>
   </div>
 </template>
-<style lang="less">
+<style rel="stylesheet/less" type="text/less" lang="less">
+  @import "../../theme/var";
   .index-overlay {
     top: .8rem !important;
   }
@@ -47,7 +46,14 @@
     display: flex;
     height: .8rem;
     align-items: center;
-    .left {
+    .left ,.right{
+      span{
+          color: @main-font-color;
+      }
+      .wk-icon{
+        color:@main-color;
+        font-size:.24rem
+      }
       position: relative;
       &:after {
         content: '';

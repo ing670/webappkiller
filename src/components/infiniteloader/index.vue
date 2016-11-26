@@ -1,7 +1,7 @@
 <template>
     <div ref="container" class="wk-infinite-scroll">
         <slot></slot>
-        <div v-show="loading">
+        <div class="loader" v-show="loading">
             <circular v-show="loading" :size="24" color="carbon"></circular>
             <span v-show="loading" class="wk-infinite-scroll-text">正在加载。。。</span>
         </div>
@@ -20,6 +20,9 @@
             onLoading: {
                 type: Function,
                 required: true
+            },
+            container:{
+                default:null
             }
         },
         watch: {
@@ -47,11 +50,20 @@
                 this.handlerScroll = (e) => {
                     this.onscroll(e)
                 }
-                this.$refs.container.addEventListener('scroll', this.handlerScroll, false)
+                if(this.container){
+                    this.container.addEventListener('scroll', this.handlerScroll, false)
+                }else {
+                    this.$refs.container.addEventListener('scroll', this.handlerScroll, false)
+                }
             },
             removeScrollListener () {
                 if (!this.handlerScroll) return
-                this.$refs.container.removeEventListener('scroll', this.handlerScroll, false)
+                if(this.container){
+                    this.container.removeEventListener('scroll', this.handlerScroll, false)
+                }else {
+                    this.$refs.container.removeEventListener('scroll', this.handlerScroll, false)
+
+                }
                 this.handlerScroll = null
             }
         },
@@ -71,6 +83,7 @@
 </script>
 
 <style rel="stylesheet/less" type="text/less" lang="less">
+
     .wk-infinite-scroll {
         position: absolute;
         top: 0;
@@ -78,7 +91,15 @@
         right: 0;
         bottom: 0;
         overflow: scroll;
-
+        .loader{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: .12rem;
+            padding-bottom: .12rem;
+            padding-left: .30rem;
+            padding-right:.30rem;
+        }
     }
 
     .wk-infinite-scroll-text {

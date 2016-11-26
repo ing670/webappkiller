@@ -6,10 +6,10 @@ import router from './router';
 import { sync } from 'vuex-router-sync'
 import axios from 'axios';
 import bridge from 'utils/bridge';
-
-
+import moment from 'moment';
 
 FastClick.attach(document.body);
+moment.locale('zh-cn')
 !function (n) {
   //i对应的数码像素
   var e = n.document, t = e.documentElement, i = 750, d = i / 100, o = "orientationchange" in n ? "orientationchange" : "resize", a = function () {
@@ -20,6 +20,18 @@ FastClick.attach(document.body);
   e.addEventListener && (n.addEventListener(o, a, !1), e.addEventListener("DOMContentLoaded", a, !1))
 }(window);
 Vue.prototype.$http=axios;
+//全局请求配置
+Vue.prototype.$http.interceptors.response.use(function (response) {
+    // Do something with response data
+    if(response.data.code==0){
+        return response.data.data;
+    }else{
+        return response;
+    }
+}, function (error) {
+    // Do something with response error
+    return Promise.reject(error);
+});
 sync(store, router);
 const app = new Vue({
   store,

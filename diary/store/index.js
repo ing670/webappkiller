@@ -4,44 +4,14 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import createLogger from 'vuex/dist/logger'
-import * as Types from './motations-types'
+import home from './home';
 Vue.use(Vuex)
 const debug = process.env.NODE_ENV !== 'production'
-const m1 = {
-  state: {
-    count: 0,
-    "weatherinfo": {
-      "city": "未知",
-      "cityid": "null",
-      "temp": "0",
-      "WD": "",
-      "WS": "",
-      "SD": "",
-      "WSE": "",
-      "time": "00:00",
-      "isRadar": "1",
-      "Radar": "JC_RADAR_AZ9010_JB",
-      "njd": "暂无实况",
-      "qy": "1011",
-      "rain": "0"
-    }
 
-  },
-  mutations: {
-    [Types.ADD](state, {v}){
-      state.count += v
-      console.log(state.count);
-    },
-    [Types.UPDATE](state,weatherinfo){
-      state.weatherinfo = weatherinfo
-    }
-
-  }
-}
 const store = new Vuex.Store({
 
   modules: {
-    m1,
+      home,
   },
   plugins: debug ? [createLogger()] : []
 })
