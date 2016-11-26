@@ -25,12 +25,6 @@
                 default:null
             }
         },
-        watch: {
-            loading(n, o){
-                console.log('新值===>' + n);
-                console.log('旧值===>' + o);
-            }
-        },
         methods: {
             onscroll (e) {
                 if (this.loading) return
