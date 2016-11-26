@@ -1,9 +1,9 @@
 <template>
-  <label @click='$emit("click", value)' class="vc-radio" :class="{'label-left': labelLeft}">
+  <label @click='$emit("click", value)' class="wk-radio" :class="{'label-left': labelLeft}">
     <input type="radio" :name="name"  :value="value" :checked="chekd">
-    <div class="vc-radio-label" v-if="label && labelLeft">{{label}}</div>
-    <div class="vc-radio-icon"></div>
-    <div class="vc-radio-label" v-if="label && !labelLeft">{{label}}</div>
+    <div class="wk-radio-label" v-if="label && labelLeft">{{label}}</div>
+    <div class="wk-radio-icon"></div>
+    <div class="wk-radio-label" v-if="label && !labelLeft">{{label}}</div>
   </label>
 </template>
 
@@ -39,11 +39,10 @@ export default {
   }
 }
 </script>
-
-<style lang="less">
-@import "../utils/_vars.less";
-@import "../utils/_mixins.less";
-.vc-radio {
+<style rel="stylesheet/less" type="text/less" lang="less">
+  @import "../theme/variables.less";
+  @import "../theme/tools.less";
+.wk-radio {
   position: relative;
   display: inline-block;;
   height: .72rem;
@@ -52,8 +51,8 @@ export default {
   input[type="radio"] {
     display: none;
     &:checked{
-      + .vc-radio-icon,
-      + .vc-radio-label + .vc-radio-icon{
+      + .wk-radio-icon,
+      + .wk-radio-label + .wk-radio-icon{
         border-color: @red;
         &:after{
           transform: scale(1);
@@ -66,7 +65,7 @@ export default {
   }
   &.label-left{
 
-    .vc-radio-label {
+    .wk-radio-label {
       margin-left: 0;
       margin-right:.16rem;
     }
@@ -77,7 +76,7 @@ export default {
   }
 }
 
-.vc-radio-icon {
+.wk-radio-icon {
   width: .4rem;
   height: .4rem;
   border-radius: .72rem;
@@ -104,15 +103,15 @@ export default {
   }
 }
 
-.vc-radio-label{
+.wk-radio-label{
   color: @color;
   font-size: .32rem;
   margin-left: .16rem;
   margin-right: auto;
 }
 
-.vc-radio-label,
-.vc-radio-icon {
+.wk-radio-label,
+.wk-radio-icon {
   display: inline-block;
   vertical-align: middle;
 }

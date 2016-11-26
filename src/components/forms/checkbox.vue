@@ -1,9 +1,9 @@
 <template>
-  <label @click='$emit("click", value)' class="vc-checkbox" :class="{'label-left': labelLeft}">
+  <label @click='$emit("click", value)' class="wk-checkbox" :class="{'label-left': labelLeft}">
     <input type="checkbox" :name="name" :value="value" :checked="chekd">
-    <div class="vc-checkbox-label"  v-if="label && labelLeft">{{label}}</div>
-    <div class="vc-checkbox-icon"></div>
-    <div class="vc-checkbox-label"  v-if="label && !labelLeft">{{label}}</div>
+    <div class="wk-checkbox-label"  v-if="label && labelLeft">{{label}}</div>
+    <div class="wk-checkbox-icon"></div>
+    <div class="wk-checkbox-label"  v-if="label && !labelLeft">{{label}}</div>
   </label>
 </template>
 
@@ -47,10 +47,10 @@ export default {
 }
 </script>
 
-<style lang="less">
-@import "../utils/_vars.less";
-@import "../utils/_mixins.less";
-.vc-checkbox {
+<style rel="stylesheet/less" type="text/less" lang="less">
+  @import "../theme/variables.less";
+  @import "../theme/tools.less";
+.wk-checkbox {
   position: relative;
   display: inline-block;
   height: .72rem;
@@ -59,8 +59,8 @@ export default {
   input[type="checkbox"] {
     display: none;
     &:checked {
-      + .vc-checkbox-icon,
-      + .vc-checkbox-label + .vc-checkbox-icon{
+      + .wk-checkbox-icon,
+      + .wk-checkbox-label + .wk-checkbox-icon{
         border-color: @red;
         background-color: @red;
         &:after{
@@ -73,7 +73,7 @@ export default {
     pointer-events: none;
   }
   &.label-left{
-    .vc-checkbox-label {
+    .wk-checkbox-label {
       margin-left: 0;
       margin-right: .16rem;
     }
@@ -84,7 +84,7 @@ export default {
   }
 }
 
-.vc-checkbox-icon {
+.wk-checkbox-icon {
   position: relative;
   width: .36rem;
   height: .36rem;
@@ -114,15 +114,15 @@ export default {
   }
 }
 
-.vc-checkbox-label{
+.wk-checkbox-label{
   color: @color;
   font-size: .32rem;
   margin-left:.16rem;
   margin-right: auto;
 }
 
-.vc-checkbox-icon,
-.vc-checkbox-label {
+.wk-checkbox-icon,
+.wk-checkbox-label {
   display: inline-block;
   vertical-align: middle;
 }

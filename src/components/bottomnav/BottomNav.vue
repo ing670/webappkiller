@@ -1,5 +1,5 @@
 <template>
-  <div class="vc-bottom-nav">
+  <div class="wk-bottom-nav">
     <slot></slot>
   </div>
 </template>
@@ -26,9 +26,9 @@ export default {
 </script>
 
 <style lang="less" rel="stylesheet/less" type="less">
-@import "../utils/_vars.less";
-@import "../utils/_mixins.less";
-.vc-bottom-nav{
+@import "../theme/variables.less";
+@import "../theme/variables.less";
+.wk-bottom-nav{
   height: 1rem;
   display: flex;
   justify-content: space-between;

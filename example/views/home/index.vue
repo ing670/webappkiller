@@ -5,7 +5,7 @@
       v-for="item in cellList"
       :title="item.title"
       :value="item.value"
-      @on-link="$router.push(item.link)">
+      @onLink="$router.push(item.link)">
         <Icon slot="startIcon" size=".48rem" :iconColor="item.startIconColor" :fontCode="item.startIconCode"></Icon>
         <Icon slot="endIcon" size=".48rem" iconColor="#000" fontCode="e5c8"></Icon>
       </cell>
@@ -87,13 +87,6 @@ export default {
           link: '/grid',
           startIconCode: 'e3a1',
           startIconColor:"#4af",
-        },
-        {
-          title: 'Nothing',
-          value: '结果组件 - 无',
-          link: '/nothing',
-         startIconCode: 'e228',
-          startIconColor:"#6af",
         },
         {
           title: 'HeaderBar',

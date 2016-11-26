@@ -55,8 +55,8 @@ export default {
 </script>
 
 <style lang="less">
-@import "../utils/_vars.less";
-@import "../utils/_mixins.less";
+@import "../theme/_vars.less";
+@import "../theme/_mixins.less";
 .vc-prompt-content{
   width: 100%;
   display: flex;

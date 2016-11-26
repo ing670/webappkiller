@@ -25,7 +25,6 @@ const router= new VueRouter({
     ]
     },
     {path: '/grid', component: () => System.import('../views/grid')},
-    {path: '/nothing', component: () => System.import('../views/nothing')},
     {path: '/icontext', component: () => System.import('../views/iconText')},
     {path: '/headerbar', component: () => System.import('../views/headerBar')},
     {path: '/spinner', component:  () => System.import('../views/spinner')},

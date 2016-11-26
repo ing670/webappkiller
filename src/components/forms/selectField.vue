@@ -1,13 +1,13 @@
 <template>
-    <div class="vc-select" ref="select">
-      <div class="vc-select-text" @click="toggleSelect()" :class="{'placeholder': !selectText}">{{selectText || placeholder}}</div>
-      <Icon fontCode="e5c5" :onIcon="toggleSelect"></Icon>
-      <div class="vc-select-drop-down" :class="{'up': up}" v-show="focus">
-        <ul class="vc-select-options">
+    <div class="wk-select" ref="select">
+      <div class="wk-select-text" @click="toggleSelect()" :class="{'placeholder': !selectText}">{{selectText || placeholder}}</div>
+      <Icon fontCode="e5c5" @click="toggleSelect"></Icon>
+      <div class="wk-select-drop-down" :class="{'up': up}" v-show="focus">
+        <ul class="wk-select-options">
           <li  v-for="(option,index) in options">
             <a  href="javascript:;"  @click="select(option)"
-              class="js-option vc-select-option" :class="{'selected': isSelect(option)}">
-              <div class="vc-select-option-content">
+              class="js-option wk-select-option" :class="{'selected': isSelect(option)}">
+              <div class="wk-select-option-content">
                 {{option.text || option}}
               </div>
               <Icon fontCode="E5CA"></Icon>
@@ -125,10 +125,10 @@ export default {
 }
 </script>
 
-<style lang="less">
-@import "../utils/_vars.less";
-@import "../utils/_mixins.less";
-.vc-select{
+<style rel="stylesheet/less" type="text/less" lang="less">
+@import "../theme/variables.less";
+@import "../theme/tools.less";
+.wk-select{
   background: #fff;
   width: 100%;
   height: .72rem;
@@ -148,7 +148,7 @@ export default {
   }
 }
 
-.vc-select-text{
+.wk-select-text{
   flex: 1;
   font-size: .32rem;
   height: .72rem;
@@ -162,7 +162,7 @@ export default {
   }
 }
 
-.vc-select-drop-down{
+.wk-select-drop-down{
   position: absolute;
   width: 100%;
   top: .72rem;
@@ -175,7 +175,7 @@ export default {
     bottom: .72rem;
   }
 }
-.vc-select-options{
+.wk-select-options{
   margin: 0;
   list-style: none;
   padding: 0;
@@ -186,7 +186,7 @@ export default {
     position: relative;
   }
 }
-.vc-select-option{
+.wk-select-option{
   display: flex;
   align-items: center;
   font-size: .32rem;
@@ -194,7 +194,7 @@ export default {
   min-height: .72rem;
   color: @color;
   position: relative;
-  .vc-ripple-ink{
+  .wk-ripple-ink{
     color: rgba(0, 0, 0, .1);
   }
   &.selected{
@@ -209,7 +209,7 @@ export default {
   }
 }
 
-.vc-select-option-content{
+.wk-select-option-content{
   flex: 1;
 }
 </style>

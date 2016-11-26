@@ -1,97 +1,97 @@
 <template>
-  <div class="vc-date-picker" :style="{'z-index': zIndex}">
-    <div class="vc-date-monthly">
-      <div class="vc-date-previous" @click="nextMonth('pre')">
+  <div class="wk-date-picker" :style="{'z-index': zIndex}">
+    <div class="wk-date-monthly">
+      <div class="wk-date-previous" @click="nextMonth('pre')">
         <i class="icon icon-keyboard_arrow_left"></i>
       </div>
-      <div class="vc-date-caption">
+      <div class="wk-date-caption">
         <a class="date-year" @click="showYear"><small>{{checked.year}}</small></a>
         <a class="date-month" @click="showMonth">{{displayInfo.month}}</a>
       </div>
-      <div class="vc-date-next" @click="nextMonth('next')">»</div>
+      <div class="wk-date-next" @click="nextMonth('next')">»</div>
     </div>
     <div class="date-box" v-if="showInfo.day">
-      <div class="vc-picker-box">
-        <div class="vc-week">
+      <div class="wk-picker-box">
+        <div class="wk-week">
           <ul>
             <li v-for="weekie in library.week">{{weekie}}</li>
           </ul>
         </div>
-        <div class="vc-day-row">
+        <div class="wk-day-row">
           <div
-          class="vc-day"
+          class="wk-day"
           v-for="(day,i) in dayList"
 
           @click="checkDay(day)"
-          :class="{'checked':day.checked,'unavailable':day.unavailable,'vc-passive-day': !(day.inMonth)}"
+          :class="{'checked':day.checked,'unavailable':day.unavailable,'wk-passive-day': !(day.inMonth)}"
           v-if="i < 7"><span>{{day.value}}</span></div>
         </div>
-        <div class="vc-day-row">
+        <div class="wk-day-row">
           <div
-          class="vc-day"
+          class="wk-day"
           v-for="(day,i) in dayList"
           @click="checkDay(day)"
-          :class="{'checked':day.checked,'unavailable':day.unavailable,'vc-passive-day': !(day.inMonth)}"
+          :class="{'checked':day.checked,'unavailable':day.unavailable,'wk-passive-day': !(day.inMonth)}"
           v-if="i >= 7 && i < 14"><span>{{day.value}}</span></div>
         </div>
-        <div class="vc-day-row">
+        <div class="wk-day-row">
           <div
-          class="vc-day"
+          class="wk-day"
           v-for="(day,i) in dayList"
           @click="checkDay(day)"
-          :class="{'checked':day.checked,'unavailable':day.unavailable,'vc-passive-day': !(day.inMonth)}"
+          :class="{'checked':day.checked,'unavailable':day.unavailable,'wk-passive-day': !(day.inMonth)}"
           v-if="i >= 14 && i < 21"><span>{{day.value}}</span></div>
         </div>
-        <div class="vc-day-row">
+        <div class="wk-day-row">
           <div
-          class="vc-day"
+          class="wk-day"
           v-for="(day,i) in dayList"
           @click="checkDay(day)"
-          :class="{'checked':day.checked,'unavailable':day.unavailable,'vc-passive-day': !(day.inMonth)}"
+          :class="{'checked':day.checked,'unavailable':day.unavailable,'wk-passive-day': !(day.inMonth)}"
           v-if="i >= 21 && i < 28"><span>{{day.value}}</span></div>
         </div>
-        <div class="vc-day-row">
+        <div class="wk-day-row">
           <div
-          class="vc-day"
+          class="wk-day"
           v-for="(day,i) in dayList"
           @click="checkDay(day)"
-          :class="{'checked':day.checked,'unavailable':day.unavailable,'vc-passive-day': !(day.inMonth)}"
+          :class="{'checked':day.checked,'unavailable':day.unavailable,'wk-passive-day': !(day.inMonth)}"
           v-if="i >= 28 && i < 35"><span>{{day.value}}</span></div>
         </div>
-        <div class="vc-day-row">
+        <div class="wk-day-row">
           <div
-          class="vc-day"
+          class="wk-day"
           v-for="(day,i) in dayList"
           @click="checkDay(day)"
-          :class="{'checked':day.checked,'unavailable':day.unavailable,'vc-passive-day': !(day.inMonth)}"
+          :class="{'checked':day.checked,'unavailable':day.unavailable,'wk-passive-day': !(day.inMonth)}"
           v-if="i >= 35 && i < 42"><span>{{day.value}}</span></div>
         </div>
       </div>
     </div>
     <div class="date-box list-box" v-if="showInfo.year">
-      <div class="vc-picker-box vc-date-list" id="yearList">
-        <div class="vc-date-item" v-for="(yearItem,i) in library.year" @click="setYear(yearItem)">{{yearItem}}</div>
+      <div class="wk-picker-box wk-date-list" id="yearList">
+        <div class="wk-date-item" v-for="(yearItem,i) in library.year" @click="setYear(yearItem)">{{yearItem}}</div>
       </div>
     </div>
     <div class="date-box list-box" v-if="showInfo.month">
-      <div class="vc-picker-box vc-date-list">
-        <div class="vc-date-item" v-for="(monthItem,i) in library.month"  @click="setMonth(monthItem)">{{monthItem}}</div>
+      <div class="wk-picker-box wk-date-list">
+        <div class="wk-date-item" v-for="(monthItem,i) in library.month"  @click="setMonth(monthItem)">{{monthItem}}</div>
       </div>
     </div>
     <div class="date-box list-box" v-if="showInfo.hour">
-      <div class="vc-picker-box vc-date-list">
-        <div class="vc-watch-box">
-          <div class="vc-hour-box">
+      <div class="wk-picker-box wk-date-list">
+        <div class="wk-watch-box">
+          <div class="wk-hour-box">
             <div class="mui-pciker-rule mui-pciker-rule-ft"></div>
             <ul>
-              <li class="vc-hour-item" v-for="hitem in hours" @click="setTime('hour', hitem, hours)"
+              <li class="wk-hour-item" v-for="hitem in hours" @click="setTime('hour', hitem, hours)"
               :class="{'active':hitem.checked}">{{hitem.value}}</li>
             </ul>
           </div>
-          <div class="vc-min-box">
+          <div class="wk-min-box">
             <div class="mui-pciker-rule mui-pciker-rule-ft"></div>
               <div
-              class="vc-min-item"
+              class="wk-min-item"
               v-for="mitem in mins"
               @click="setTime('min',mitem, mins)"
               :class="{'active':mitem.checked}"
@@ -100,7 +100,7 @@
         </div>
       </div>
     </div>
-    <div class="vc-button-box">
+    <div class="wk-button-box">
       <Button @click="dismiss" :text="option.buttons? option.buttons.cancel : 'Cancel' " ></Button>
       <Button @click="picked" :text="option.buttons? option.buttons.ok : 'Ok' " ></Button>
     </div>
@@ -474,10 +474,10 @@ export default {
   }
 }
 </script>
-<style lang="less">
-@import "../utils/_vars.less";
-@import "../utils/_mixins.less";
-.vc-date-picker {
+<style rel="stylesheet/less" type="text/less" lang="less">
+  @import "../theme/variables.less";
+  @import "../theme/tools.less";
+.wk-date-picker {
   display: inline-block;
   background: @color;
   overflow: hidden;
@@ -493,18 +493,18 @@ export default {
   transform: translate(-50%, -50%);
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
 }
-.vc-picker-box {
+.wk-picker-box {
   background: #fff;
   width: 100%;
   max-width: 8rem;
   height: 5.6rem;
 }
-.vc-day-row{
+.wk-day-row{
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.vc-day {
+.wk-day {
   width: 14.2857143%;
   text-align: center;
   cursor: pointer;
@@ -528,17 +528,17 @@ export default {
     border-radius: 50%;
   }
 }
-.vc-week{
+.wk-week{
   height: .8rem;
   width: 100%;
 }
-.vc-week ul {
+.wk-week ul {
   margin: 0;
   padding: 0;
   list-style: none;
   height: .8rem;
 }
-.vc-week ul li {
+.wk-week ul li {
   width: 14.2%;
   height: .8rem;
   line-height: .8rem;
@@ -548,14 +548,14 @@ export default {
   color: #000;
   font-weight: bold;
 }
-.vc-passive-day{
+.wk-passive-day{
   color: #bbb;
 }
 .unavailable {
   color: #ccc;
   cursor: not-allowed;
 }
-.vc-date-monthly {
+.wk-date-monthly {
   height: 2rem;
   color: #fff;
   display: flex;
@@ -563,13 +563,13 @@ export default {
   align-items: center;
 
 }
-.vc-date-monthly > div {
+.wk-date-monthly > div {
   display: block;
   text-align: center;
   cursor: pointer;
 }
-.vc-date-previous,
-.vc-date-next {
+.wk-date-previous,
+.wk-date-next {
   position: relative;
   width: 20% !important;
   text-indent: -6rem;
@@ -577,7 +577,7 @@ export default {
   height: 100px;
   color: #fff;
 }
-.vc-date-caption {
+.wk-date-caption {
   width: 60%;
   box-sizing: border-box;
   font-size: .48rem;
@@ -590,12 +590,12 @@ export default {
   }
 }
 
-.vc-date-caption span:hover {
+.wk-date-caption span:hover {
   color: rgba(255, 255, 255, 0.7);
 }
 
-.vc-date-next::before,
-.vc-date-previous::before {
+.wk-date-next::before,
+.wk-date-previous::before {
   width: .4rem;
   height: .04rem;
   text-align: center;
@@ -611,8 +611,8 @@ export default {
   -moz-transform: rotate(45deg);
   transform: rotate(45deg);
 }
-.vc-date-next::after,
-.vc-date-previous::after {
+.wk-date-next::after,
+.wk-date-previous::after {
   width: .4rem;
   height: .04rem;
   text-align: center;
@@ -628,35 +628,35 @@ export default {
   -moz-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
-.vc-date-previous::after {
+.wk-date-previous::after {
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
   transform: rotate(45deg);
 }
-.vc-date-previous::before {
+.wk-date-previous::before {
   -webkit-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
-.vc-date-item {
+.wk-date-item {
   text-align: center;
   font-size: .4rem;
   padding: .2rem 0;
   cursor: pointer;
 }
-.vc-date-item:hover {
+.wk-date-item:hover {
   background: #e0e0e0;
 }
-.vc-date-list {
+.wk-date-list {
   overflow: auto;
   vertical-align: top;
   padding: 0;
 }
-.vc-vue-date {
+.wk-vue-date {
   display: inline-block;
   color: #5D5D5D;
 }
-.vc-button-box {
+.wk-button-box {
   align-items: center;
   background: #fff;
   vertical-align: top;
@@ -667,12 +667,12 @@ export default {
   display: flex;
   justify-content: flex-end;
 }
-.vc-watch-box {
+.wk-watch-box {
   height: 100%;
   overflow: hidden;
 }
-.vc-hour-box,
-.vc-min-box {
+.wk-hour-box,
+.wk-min-box {
   display: inline-block;
   width: 50%;
   text-align: center;
@@ -680,18 +680,18 @@ export default {
   overflow: auto;
   float: left;
 }
-.vc-hour-box ul,
-.vc-min-box ul{
+.wk-hour-box ul,
+.wk-min-box ul{
   list-style: none;
     margin: 0;
     padding: 0;
 }
-.vc-hour-item, .vc-min-item {
+.wk-hour-item, .wk-min-item {
   padding: .2rem;
   font-size: .4rem;
   cursor: pointer;
 }
-.vc-hour-box .active, .vc-min-box .active{
+.wk-hour-box .active, .wk-min-box .active{
   background: @red;
   color: #FFF !important;
 }

@@ -12,6 +12,6 @@ import TabBarItem from './TabBarItem.vue'
 
 export default {}
 export {
-  TabBar,
-  TabBarItem
+    TabBar,
+    TabBarItem
 };

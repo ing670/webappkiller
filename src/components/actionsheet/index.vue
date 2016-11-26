@@ -1,6 +1,6 @@
 <template>
 
-    <overlay v-show='show' @click.native="overlayClick">
+    <overlay v-show='show' @click="overlayClick">
       <div  class="vc-action-sheet" >
         <div class="vc-action-sheet-group">
           <a href="javascript:;" @click="actionClick(action)"   :class="['color-' + action.color, action.isLabel ? 'vc-action-sheet-label' : 'vc-action-sheet-button']" v-for="action in actions">
@@ -61,8 +61,8 @@ export default {
 </script>
 
 <style lang="less" rel="stylesheet/less" type="less" >
-@import "../utils/_vars.less";
-@import "../utils/_mixins.less";
+@import "../theme/variables.less";
+@import "../theme/tools.less";
 .vc-action-sheet{
   position: fixed;
   left: 0;

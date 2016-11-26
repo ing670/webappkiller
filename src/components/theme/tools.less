@@ -2,36 +2,44 @@
   -webkit-transition-duration: @d;
   transition-duration: @d;
 }
+
 .delay(@d) {
   -webkit-transition-delay: @d;
   transition-delay: @d;
 }
+
 .transform(@t) {
   -webkit-transform: @t;
   transform: @t;
 }
+
 .transform-origin(@to) {
   -webkit-transform-origin: @to;
   transform-origin: @to;
 }
+
 .translate3d(@x:0, @y:0, @z:0) {
-  -webkit-transform: translate3d(@x,@y,@z);
-  transform: translate3d(@x,@y,@z);
+  -webkit-transform: translate3d(@x, @y, @z);
+  transform: translate3d(@x, @y, @z);
 }
+
 .animation (@a) {
   -webkit-animation: @a;
   animation: @a;
 }
+
 .scrollable() {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
 }
+
 .flex-shrink(@fs) {
   -webkit-box-flex: @fs;
   -webkit-flex-shrink: @fs;
   -ms-flex: 0 @fs auto;
   flex-shrink: @fs;
 }
+
 .clearfix() {
   &:after,
   &:before {
@@ -42,6 +50,7 @@
     clear: both;
   }
 }
+
 .hairline(@position, @color) when (@position = top) {
   &:before {
     content: '';
@@ -64,6 +73,7 @@
     }
   }
 }
+
 .hairline(@position, @color) when (@position = left) {
   &:before {
     content: '';
@@ -87,6 +97,7 @@
   }
 
 }
+
 .hairline(@position, @color) when (@position = bottom) {
   &:after {
     content: '';
@@ -108,6 +119,7 @@
     }
   }
 }
+
 .hairline(@position, @color) when (@position = right) {
   &:after {
     content: '';
@@ -130,35 +142,41 @@
     }
   }
 }
+
 // For right and bottom
 .hairline-remove(@position) when not (@position = left) and not (@position = top) {
   &:after {
     display: none;
   }
 }
+
 // For left and top
 .hairline-remove(@position) when not (@position = right) and not (@position = bottom) {
   &:before {
     display: none;
   }
 }
+
 // For right and bottom
 .hairline-color(@position, @color) when not (@position = left) and not (@position = top) {
   &:after {
     background-color: @color;
   }
 }
+
 // For left and top
 .hairline-color(@position, @color) when not (@position = right) and not (@position = bottom) {
   &:before {
     background-color: @color;
   }
 }
+
 // Encoded SVG Background
 .encoded-svg-background(@svg) {
   @url: `encodeURIComponent(@{svg})`;
   background-image: url("data:image/svg+xml;charset=utf-8,@{url}");
 }
+
 // Preserve3D
 .preserve3d() {
   -webkit-transform-style: preserve-3d;
@@ -166,26 +184,28 @@
   -ms-transform-style: preserve-3d;
   transform-style: preserve-3d;
 }
+
 // Shadow
 .depth(@level:1) {
   & when (@level = 1) {
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   }
   & when (@level = 2) {
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   }
   & when (@level = 3) {
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   }
   & when (@level = 4) {
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   }
   & when (@level = 5) {
-    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
   }
 }
+
 // Highlighted Links
-.active-highlight(@color:rgba(255, 255, 255, 0.15)){
+.active-highlight(@color:rgba(255, 255, 255, 0.15)) {
   &:before {
     content: '';
     width: 100%;
@@ -207,12 +227,14 @@
     .transition(150ms);
   }
 }
+
 .active-highlight-color(@color) {
   &:before {
-    background-image: -webkit-radial-gradient(center, circle cover, @color 66%, rgba(red(@color),green(@color),blue(@color),0) 66%);
-    background-image: radial-gradient(circle at center, @color 66%, rgba(red(@color),green(@color),blue(@color),0) 66%);
+    background-image: -webkit-radial-gradient(center, circle cover, @color 66%, rgba(red(@color), green(@color), blue(@color), 0) 66%);
+    background-image: radial-gradient(circle at center, @color 66%, rgba(red(@color), green(@color), blue(@color), 0) 66%);
   }
 }
+
 // No Scrollbar
 .no-scrollbar() {
   &::-webkit-scrollbar {

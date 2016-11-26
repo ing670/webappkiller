@@ -12,15 +12,6 @@ export default {
       transitionName:''
     }
   },
-  computed: {
-    isBack() {
-      if(this.$route.path === '/') {
-        return '';
-      } else {
-        return 'i i-backrow';
-      }
-    },
-  },
   methods:{
     alertMe(){
       alert('aaaaa');

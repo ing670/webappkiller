@@ -1,5 +1,5 @@
 <template>
-  <em class="qlc-badge" :style="{'background-color':color}">
+  <em class="wk-badge" :style="{'background-color':color}">
       {{value}}
   </em>
 </template>
@@ -22,7 +22,7 @@ export default {
 </script>
 
 <style lang="less" rel="stylesheet/less" type="less">
-.qlc-badge{
+.wk-badge{
   height: .32rem;
   line-height: .32rem;
   font-size: .16rem;

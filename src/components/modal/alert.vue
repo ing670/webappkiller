@@ -53,7 +53,7 @@ export default {
 </script>
 
 <style lang="less">
-@import "../utils/_vars.less";
+@import "../theme/_vars.less";
 .vc-alert-content{
   display: flex;
 }

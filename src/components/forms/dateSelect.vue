@@ -1,6 +1,6 @@
 <template>
-  <div class="vc-date-select">
-    <div class="vc-date-select-text" @click="showSelect()" :class="{'placeholder': !value}">{{value || placeholder}}</div>
+  <div class="wk-date-select">
+    <div class="wk-date-select-text" @click="showSelect()" :class="{'placeholder': !value}">{{value || placeholder}}</div>
     <icon fontFamily="material" fontCode="e191" @click="showSelect()"></icon>
     <overlay v-if="show" fixed @click="hideSelect"></overlay>
     <date-picker @date-select-cancel="hideSelect" :type="type" :format="format" :limit="limit" @date-select-sure="select" v-if="show" :time="value"></date-picker>
@@ -66,10 +66,10 @@ export default {
 }
 </script>
 
-<style lang="less">
-@import "../utils/_vars.less";
-@import "../utils/_mixins.less";
-.vc-date-select{
+<style rel="stylesheet/less" type="text/less" lang="less">
+  @import "../theme/variables.less";
+  @import "../theme/tools.less";
+.wk-date-select{
   width: 100%;
   height: 36px;
   display: flex;
@@ -97,7 +97,7 @@ export default {
   }
 }
 
-.vc-date-select-text{
+.wk-date-select-text{
   flex: 1;
   font-size: 16px;
   height: 36px;

@@ -1,4 +1,4 @@
-(function(root) {
+(function (root) {
     var ua = window.navigator.userAgent;
     //桥接器的命名空间
     var ns = {
@@ -6,23 +6,23 @@
         // 探测操作系统浏览器
         ios: (/iPhone|iPad|iPod/i).test(ua),
         android: (/Android/i).test(ua),
-        version:"0.0.2",
-        config:function (obj) {
+        version: "0.0.2",
+        config: function (obj) {
             var bridge = root.WebViewJavascriptBridge;
             var sendObj = {
-                function:'permissionVerify',
-                parameters:obj
+                function: 'permissionVerify',
+                parameters: obj
             };
             bridge.send(JSON.stringify(sendObj), function (responseData) {
 
             });
         },
         //下面bridge中的各项请求参数中如有callback,需要通过此函数先行注册才能生效.
-        register:function (obj) {
+        register: function (obj) {
             var bridge = root.WebViewJavascriptBridge;
-            if(typeof  obj === 'object' && ns._initialized) {
-                for(var key in obj) {
-                    if(typeof obj[key] === 'function') {
+            if (typeof  obj === 'object' && ns._initialized) {
+                for (var key in obj) {
+                    if (typeof obj[key] === 'function') {
                         bridge.registerHandler(key, obj[key]);
                     } else {
                         alert('注册的必须为函数');
@@ -35,7 +35,7 @@
         },
         // 由于桥的初始化需要时间，不知道是否已经ok，这适用于在开始就要执行的bridge函数
         // 桥接器的ready函数，只在初始化的时候才调用，先把回调函数都追加到一个列表中
-        ready: function(callback) {
+        ready: function (callback) {
             if (callback) {
                 if (ns._initialized) {
                     // 立即执行
@@ -46,29 +46,31 @@
                 }
             }
         },
-        readycallback:[]
+        readycallback: []
     };
 
     // 构造一个回调函数
-    var wrapMethod = function(data){
+    var wrapMethod = function (data) {
         // 第一个参数为原生功能调用完成的callback，经常用
         // 第二个参数为原生功能在使用过程中需要调用的回调
-        var ret = function(callback, parameters) {
+        var ret = function (callback, parameters) {
             var bridge = root.WebViewJavascriptBridge;
             if (ns._initialized) {
-                if(!callback) {
+                if (!callback) {
                     // the default callback to fullfill bridge's requirement
-                    callback = function(responseData){ };
+                    callback = function (responseData) {
+                    };
                 }
-                if(typeof callback === 'object') {
+                if (typeof callback === 'object') {
                     parameters = callback;
-                    callback = function (responseData) {};
+                    callback = function (responseData) {
+                    };
                 }
                 // 检查额外的参数，并且合并
                 if (parameters && typeof(parameters) === 'object') {
                     if (data.parameters) {
                         // 合并参数
-                        for( var key in parameters) {
+                        for (var key in parameters) {
                             data.parameters[key] = parameters[key];
                         }
                     } else {
@@ -82,20 +84,20 @@
                     callback(JSON.parse(responseData));
                 });
             } else {
-                ns.readycallback.push({fn:ret, args:arguments});
+                ns.readycallback.push({fn: ret, args: arguments});
                 console.log("js bridge has not been initialized yet.");
             }
         };
         return ret;
     };
     // generate function in the namespace
-    var generator = function(ns) {
+    var generator = function (ns) {
         // 定义桥调用协议
         var methods = {
             //native客户端接口
-            client:{
+            client: {
                 //隐藏头部导航
-                "hiddenMenu" : {
+                "hiddenMenu": {
                     function: 'hiddenMenu'
                 },
                 //关闭webview
@@ -124,132 +126,130 @@
                 },
                 //打开新的窗口
                 "openWindow": {
-                    function:'openWindow'
+                    function: 'openWindow'
                 },
-                "selectDate":{
-                    function:'selectDate'
+                "selectDate": {
+                    function: 'selectDate'
                 },
-                "selectList":{
-                    function:'selectList'
+                "selectList": {
+                    function: 'selectList'
                 },
-                "selectAttachment":{
-                    function:'selectAttachment'
+                "selectAttachment": {
+                    function: 'selectAttachment'
                 },
-                "selectCity":{
-                    function:'selectCity'
+                "selectCity": {
+                    function: 'selectCity'
                 },
-                "selectMap":{
-                    function:'selectMap'
+                "selectMap": {
+                    function: 'selectMap'
                 },
-                "copyText":{
-                    function:'copyText'
+                "copyText": {
+                    function: 'copyText'
                 },
-                "configNavigationBar":{
-                    function:'configNavigationBar'
+                "configNavigationBar": {
+                    function: 'configNavigationBar'
                 },
-                "share":{
-                    function:'share'
+                "share": {
+                    function: 'share'
                 },
-                "viewOrDeleteImage":{
-                    function:'viewOrDeleteImage'
+                "viewOrDeleteImage": {
+                    function: 'viewOrDeleteImage'
                 },
-                "viewImage":{
-                    function:'viewImage'
+                "viewImage": {
+                    function: 'viewImage'
                 },
-                "previewFile":{
-                    function:'previewFile'
+                "previewFile": {
+                    function: 'previewFile'
                 },
-                "getLocation":{
-                    function:'getLocation'
+                "getLocation": {
+                    function: 'getLocation'
                 },
-                "vibrate":{
-                    function:'vibrate'
+                "vibrate": {
+                    function: 'vibrate'
                 },
-                "getShaking":{
-                    function:'getShaking'
+                "getShaking": {
+                    function: 'getShaking'
 
                 },
-                "getStepCount":{
-                    function:'getStepCount'
+                "getStepCount": {
+                    function: 'getStepCount'
 
                 },
-                "getScreenshot":{
-                    function:'getScreenshot'
+                "getScreenshot": {
+                    function: 'getScreenshot'
 
                 },
-                "configNavBar":{
-                    function:'configNavBar'
+                "configNavBar": {
+                    function: 'configNavBar'
 
                 },
-                "payResult":{
-                    function:'payResult'
+                "payResult": {
+                    function: 'payResult'
 
                 },
-                "getStepServiceStatus":{
-
-                },
-                "stopOrStartStepService":{
-                    function:'stopOrStartStepService'
+                "getStepServiceStatus": {},
+                "stopOrStartStepService": {
+                    function: 'stopOrStartStepService'
 
                 }
 
 
             },
             //企业相关信息接口
-            enterprise:{
-                "openApp":{
-                    function:'openAPP'
+            enterprise: {
+                "openApp": {
+                    function: 'openAPP'
                 },
-                "selectContacts":{
-                    function:'selectContacts'
+                "selectContacts": {
+                    function: 'selectContacts'
                 },
-                "callUer":{
-                    function:'callUer'
+                "callUer": {
+                    function: 'callUer'
                 },
-                "bindPhone":{
-                    function:'bindPhone'
+                "bindPhone": {
+                    function: 'bindPhone'
                 },
-                "feedReply":{
-                    function:'feedReply'
+                "feedReply": {
+                    function: 'feedReply'
                 },
-                "sendMemail":{
-                    function:'sendMemail'
+                "sendMemail": {
+                    function: 'sendMemail'
                 },
-                "sendMessage":{
-                    function:'sendMessage'
+                "sendMessage": {
+                    function: 'sendMessage'
                 },
-                "callUsers":{
-                    function:'callUsers'
+                "callUsers": {
+                    function: 'callUsers'
                 },
-                "selectGroup":{
-                    function:'selectGroup'
+                "selectGroup": {
+                    function: 'selectGroup'
                 },
-                "processAt":{
-                    function:'processAt'
+                "processAt": {
+                    function: 'processAt'
                 },
-                "viewUser":{
-                    function:'viewUser'
+                "viewUser": {
+                    function: 'viewUser'
                 },
-                "openChatWindow":{
-                    function:'openChatWindow'
+                "openChatWindow": {
+                    function: 'openChatWindow'
                 },
-                "createFeed":{
-                    function:'createFeed'
+                "createFeed": {
+                    function: 'createFeed'
                 },
-                "viewTaskLog":{
-                    function:'viewTaskLog'
+                "viewTaskLog": {
+                    function: 'viewTaskLog'
                 },
-                "viewTaskUser":{
-                    function:'viewTaskUser'
+                "viewTaskUser": {
+                    function: 'viewTaskUser'
                 },
-                "createOredit":{
-                    function:'createOredit'
+                "createOredit": {
+                    function: 'createOredit'
                 },
-                "taskComment":{
-                    function:'taskComment'
+                "taskComment": {
+                    function: 'taskComment'
                 },
-                "feedDataUpdate":{
-                    function:'feedDataUpdate'
+                "feedDataUpdate": {
+                    function: 'feedDataUpdate'
                 }
             }
         };
@@ -271,21 +271,22 @@
     //生成方法对象
     generator(ns);
     // 初始化函数
-    var connectWebViewJavascriptBridge = function(callback) {
+    var connectWebViewJavascriptBridge = function (callback) {
         if (window.WebViewJavascriptBridge) {
             callback(WebViewJavascriptBridge);
         } else {
-            document.addEventListener('WebViewJavascriptBridgeReady', function() {
+            document.addEventListener('WebViewJavascriptBridgeReady', function () {
                 callback(WebViewJavascriptBridge);
             }, false);
         }
     };
     // 初始化JS Bridge
-    connectWebViewJavascriptBridge(function(bridge){
-        try{
-            bridge.init(function(message, responseCallback) {});
+    connectWebViewJavascriptBridge(function (bridge) {
+        try {
+            bridge.init(function (message, responseCallback) {
+            });
             // 确保桥接器绑定到window对象 //这段代码费的
-            if(!window.WebViewJavascriptBridge) {
+            if (!window.WebViewJavascriptBridge) {
                 window.WebViewJavascriptBridge = bridge;
             }
             // 如果有延迟执行回调的情况，执行它
@@ -293,9 +294,9 @@
             // 生成函数
             //generator(ns, bridge);
 
-            if(ns.readycallback.length) {
+            if (ns.readycallback.length) {
                 ns.readycallback.forEach(function (callbackObj) {
-                    if(typeof callbackObj === 'object') {
+                    if (typeof callbackObj === 'object') {
                         var args = callbackObj.args;
                         var fn = callbackObj.fn;
                         switch (args.length) {
@@ -311,7 +312,7 @@
                             default:
                                 fn(args[0], args[1], args[2]);
                         }
-                    } else if(typeof callbackObj === 'function') {
+                    } else if (typeof callbackObj === 'function') {
                         callbackObj();
 
                     } else {
@@ -332,11 +333,11 @@
     // 绑定到全局对象上
     // 不推荐使用模块加载器加载使用,jsbridge需要在页面开始时初始化,然后即可调用
 
-    if(typeof define === 'function' && (define.amd || define.cmd)) {
+    if (typeof define === 'function' && (define.amd || define.cmd)) {
         define(function () {
             return ns;
         })
-    } else if(typeof module === 'object' && typeof module.exports === 'object') {
+    } else if (typeof module === 'object' && typeof module.exports === 'object') {
         module.exports = ns;
     }
 }(window));

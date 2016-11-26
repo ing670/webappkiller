@@ -9,7 +9,7 @@
     <badge class="mybadge" value="1" color="blue"></badge>
   </div>
 </template>
-<style lang="less">
+<style lang="less" rel="stylesheet/less" type="text/less">
   .wrap{
     position: relative;
   }

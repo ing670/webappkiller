@@ -1,8 +1,8 @@
 <template>
-<a href="javascript:;" class="vc-bottom-nav-item"  :class="{'active': show}" @click="onClick()">
+<a href="javascript:;" class="wk-bottom-nav-item"  :class="{'active': show}" @click="onClick()">
   <slot>
     <icon :value="icon"></icon>
-    <div class="vc-bottom-nav-item-text">{{title}}</div>
+    <div class="wk-bottom-nav-item-text">{{title}}</div>
   </slot>
 </a>
 </template>
@@ -56,9 +56,9 @@ export default {
 </script>
 
 <style lang="less" rel="stylesheet/less" type="less">
-@import "../utils/_mixins.less";
-@import "../utils/_vars.less";
-.vc-bottom-nav-item{
+@import "../theme/tools.less";
+@import "../theme/variables.less";
+.wk-bottom-nav-item{
   flex: 1;
   width: 100%;
   height: 100%;
@@ -69,16 +69,16 @@ export default {
   align-items: center;
   color: inherit;
   .active-highlight();
-  .vc-ripple-ink{
+  .wk-ripple-ink{
     color: @tap-color;
   }
   &.active {
     color: @red;
-    .vc-bottom-nav-item-text{
+    .wk-bottom-nav-item-text{
       font-size: 14px;
     }
   }
-  .vc-bottom-nav-item-text{
+  .wk-bottom-nav-item-text{
     font-size: 12px;
     transition: color 0.3s, font-size 0.3s;
   }

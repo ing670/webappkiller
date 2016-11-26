@@ -1,6 +1,5 @@
 import Grid from './grid';
 import Cell from './cell';
-import Nothing from './nothing';
 import IconText from './icontext';
 import HeaderBar from './header';
 import Icon from './icon';
@@ -29,37 +28,35 @@ import Popup from './popup/popup.vue'
 import App from './app'
 
 
-
 export default {};
 
 export {
-  App,
-  Popup,
-  BottomNavItem,
-  BottomNav,
-  TabBar,
-  TabBarItem,
-  Overlay,
-  Modal,
-  ActionSheet,
-  Picker,
-  DateSelect,
-  DatePicker,
-  Checkbox,
-  Radio,
-  Page,
-  Ripple,
-  SelectField,
-  Range,
-  Switcher,
-  Toast,
-  InfiniteLoader,
-  Button,
-  Badge,
-  Icon,
-  Grid,
-  Cell,
-  Nothing,
-  IconText,
-  HeaderBar,
+    App,
+    Popup,
+    BottomNavItem,
+    BottomNav,
+    TabBar,
+    TabBarItem,
+    Overlay,
+    Modal,
+    ActionSheet,
+    Picker,
+    DateSelect,
+    DatePicker,
+    Checkbox,
+    Radio,
+    Page,
+    Ripple,
+    SelectField,
+    Range,
+    Switcher,
+    Toast,
+    InfiniteLoader,
+    Button,
+    Badge,
+    Icon,
+    Grid,
+    Cell,
+    IconText,
+    HeaderBar,
 };

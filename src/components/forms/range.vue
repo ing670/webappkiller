@@ -1,5 +1,5 @@
 <template>
-<div class="vc-range ">
+<div class="wk-range ">
   <input ref='inputrange' @input="onInput" type="range" :step="step" :min="min" :max="max" v-model="value" :style="{'background':'linear-gradient(to right, #ff5252 ' + per + '%,#ff5252 ' + per + '%, #b9b9b9 ' +per + '%)'}">
 </div>
 </template>
@@ -43,10 +43,10 @@ export default {
 }
 </script>
 
-<style lang="less">
-@import "../utils/_vars.less";
-@import "../utils/_mixins.less";
-.vc-range {
+<style rel="stylesheet/less" type="text/less" lang="less">
+@import "../theme/variables.less";
+@import "../theme/tools.less";
+.wk-range {
   width: 100%;
   position: relative;
   overflow: hidden;

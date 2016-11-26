@@ -33,12 +33,9 @@ export default {
 }
 </script>
 
-<style lang="less">
-@carbon: #7e848c;
-@red: #ff5252;
-@green: #4caf50;
-@amber: #ffc107;
-@blue: #2196f3;
+<style rel="stylesheet/less" type="text/less" lang="less">
+    @import "../theme/variables.less";
+    @import "../theme/tools.less";
 .preloader-wrapper {
   display: inline-block;
   vertical-align: middle;

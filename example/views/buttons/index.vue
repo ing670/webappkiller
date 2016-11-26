@@ -9,7 +9,7 @@
       <Toast ref="toast" text="Toast"></Toast>
     </Page>
 </template>
-<style lang="less">
+<style rel="stylesheet/less" type="text/less" lang="less">
     .vc-button-fill {
         background-color: #7e848c;;
         color: #fff;
