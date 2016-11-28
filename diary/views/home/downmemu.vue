@@ -24,6 +24,7 @@
 </template>
 <style rel="stylesheet/less" type="text/less" lang="less">
     @import "../../theme/var";
+    @import "~components/theme/tools";
 
     .index-overlay {
         top: .8rem !important;
@@ -41,32 +42,13 @@
         padding-left: .3rem;
         padding-right: .3rem;
         position: relative;
-        &:after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 1px;
-            bottom: 0;
-            left: 0;
-            transform: scaleY(0.5);
-            background: @main-border-color;
-        }
+        .hairline(bottom,@main-border-color);
     }
 
     .downmemu-wraper {
         background: #fff;
         position: relative;
-
-        &:after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 1px;
-            bottom: 0;
-            left: 0;
-            transform: scaleY(0.5);
-            background: #eee;
-        }
+        .hairline(bottom,@main-border-color);
         display: flex;
         height: .8rem;
         align-items: center;

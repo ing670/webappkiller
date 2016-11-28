@@ -12,11 +12,6 @@ export default {
       transitionName:''
     }
   },
-  methods:{
-    alertMe(){
-      alert('aaaaa');
-    }
-  },
   watch: {
     '$route' (to, from) {
       const toDepth = to.path.split('/')
@@ -39,7 +34,7 @@ export default {
 //      }else{
 //        this.transitionName = toDepth.length < fromDepth.length ? 'slide-zoom-in' : 'slide-zoom-out'
 //      }
-      console.log(this.transitionName)
+      //console.log(this.transitionName)
     }
   }
 };

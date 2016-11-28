@@ -1,6 +1,6 @@
 <template>
 
-    <Page>
+    <Page :loading="home.loading">
         <Downmemu slot="header" :leftMenu="home.leftMenu" :rightMenu="home.rightMenu" @itemLeftClick="itemLeftClick"
                   @itemRightClick="itemRightClick"></Downmemu>
 
@@ -46,10 +46,6 @@
         },
 
         created(){
-//            this.$http.crossDomain=true;
-//            this.$http.get("/diaryQuery/getAllDiary?pageNum="+this.pageNum+"&pageSize="+this.pageSize+"&range="+this.range+"&templateId="+this.templateId+"").then((successResponse)=>{
-//             this.$store.commit(Types.HOME_GET_ALL_DIARY,successResponse);
-//            });
             this.$store.dispatch('queryDiary', {
                 pageNum: this.pageNum,
                 pageSize: this.pageSize,
@@ -67,7 +63,7 @@
                         loader.loading = false;
                         this.$store.commit(Types.HOME_GET_ALL_DIARY, successResponse);
                     });
-                }, 200)
+                }, 1000)
             },
             itemLeftClick({leftSelected, rightSelected}){
                 this.pageNum = 1;

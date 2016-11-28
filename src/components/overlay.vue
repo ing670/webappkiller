@@ -10,10 +10,6 @@
             onClick: {
                 type: Function
             },
-            opacity: {
-                type: Number,
-                default: 0.4
-            },
         },
         data () {
             return {

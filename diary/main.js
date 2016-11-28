@@ -28,5 +28,4 @@ const app = new Vue({
     router,
     ...root,
 });
-
 app.$mount('#app');

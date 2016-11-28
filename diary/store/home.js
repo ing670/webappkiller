@@ -5,6 +5,7 @@ import  * as Types from './motations-types'
 import myaxio from '../utils/service';
 const home = {
     state: {
+        loading: false,
         list: [],
         leftMenu: [{
             title: '所有的',
@@ -32,30 +33,42 @@ const home = {
         [Types.HOME_GOOD](state, n){
             let it = state.list.find((it) => it.id == n.id);
             it.likeNum = n.likeTotal;
-            it.isLike==0?it.isLike=1:it.isLike=0;
+            it.isLike == 0 ? it.isLike = 1 : it.isLike = 0;
         },
         [Types.HOME_UPDATE_TEMPLATES](state, n){
             state.rightMenu = state.rightMenu.concat(n.list);
         },
+        [Types.HOME_LOADING](state, n){
+            state.loading = n;
+        },
+
 
     },
-    actions:{
-        leftClick(ctx,{id}){
-            myaxio.post('/diaryLike/'+id).then((successResponse)=>{
-                successResponse.id=id;
+    actions: {
+        leftClick(ctx, {id}){
+            ctx.commit(Types.HOME_LOADING, true);
+            myaxio.post('/diaryLike/' + id).then((successResponse) => {
+                successResponse.id = id;
                 console.log(successResponse);
-                ctx.commit(Types.HOME_GOOD,successResponse);
+                ctx.commit(Types.HOME_GOOD, successResponse);
+                ctx.commit(Types.HOME_LOADING, false);
             })
+
         },
         getTemplates(ctx){
-            myaxio.get('/template/list?client=app').then((successResponse)=>{
+            ctx.commit(Types.HOME_LOADING, true);
+            myaxio.get('/template/list?client=app').then((successResponse) => {
                 console.log(successResponse)
-                ctx.commit(Types.HOME_UPDATE_TEMPLATES,successResponse);
+                ctx.commit(Types.HOME_UPDATE_TEMPLATES, successResponse);
+                ctx.commit(Types.HOME_LOADING, false);
+
             })
         },
-        queryDiary(ctx,{pageNum,pageSize,range,templateId}){
-            myaxio.get("/diaryQuery/getAllDiary?pageNum="+pageNum+"&pageSize="+pageSize+"&range="+range+"&templateId="+templateId+"").then((successResponse)=>{
-                ctx.commit(Types.HOME_GET_ALL_DIARY,successResponse);
+        queryDiary(ctx, {pageNum, pageSize, range, templateId}){
+            ctx.commit(Types.HOME_LOADING, true);
+            myaxio.get("/diaryQuery/getAllDiary?pageNum=" + pageNum + "&pageSize=" + pageSize + "&range=" + range + "&templateId=" + templateId + "").then((successResponse) => {
+                ctx.commit(Types.HOME_GET_ALL_DIARY, successResponse);
+                ctx.commit(Types.HOME_LOADING, false);
             });
         }
     }

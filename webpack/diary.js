@@ -146,7 +146,7 @@ if (process.env.NODE_ENV === 'dev') {
         // 自动注入 html
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: path.resolve(__dirname, '../example/index.html'),
+            template: path.resolve(__dirname, '../diary/index.html'),
         }),
     ];
 }

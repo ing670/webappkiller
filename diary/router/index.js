@@ -3,6 +3,7 @@
  */
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import DiaryTemplateList from '../views/DiaryTemplateList';
 Vue.use(VueRouter);
 
 
@@ -10,7 +11,7 @@ const router= new VueRouter({
   mode: 'hash',
   routes: [
     {path: '/', component: () => System.import('../views/home')},
-    {path: '/diaryTemplateList', component: () => System.import('../views/DiaryTemplateList')},
+    {path: '/diaryTemplateList', component: DiaryTemplateList},
 
   ],
 });
