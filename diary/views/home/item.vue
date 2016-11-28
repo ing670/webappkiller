@@ -26,12 +26,12 @@
             <img  v-for='it in images':src="it.fileKey"/>
         </div>
         <div class="bottom">
-            <div class="good">
-                <icon-text @click="leftClick" fontFamily="icomoon"
+            <div class="good" :class="payload.isLike?'mygood':''">
+                <icon-text @click="$emit('leftClick')" fontFamily="icomoon"
                            fontCode="E90E" :text="payload.likeNum" position="left"></icon-text>
             </div>
             <div>
-                <icon-text @click=""  fontFamily="icomoon"
+                <icon-text @click="$emit('rightClick')"  fontFamily="icomoon"
                            fontCode="E90E" :text="payload.commentNum" position="left"></icon-text>
             </div>
         </div>
@@ -145,7 +145,8 @@
                 return JSON.parse(this.payload.content);
             },
             images(){
-                return this.payload.files.filter((it)=>it.fileExtension =='.jpg'||it.fileExtension =='.png'||it.fileExtension =='.gif')
+                let imgs=this.payload.files||[];
+                return imgs.filter((it)=>it.fileExtension =='.jpg'||it.fileExtension =='.png'||it.fileExtension =='.gif')
             }
 
         },
@@ -175,19 +176,13 @@
                     formbody.classList.add('show-expand');
                 }
             },
-            leftClick(){
-                this.payload.userName= '你大爷'
-                this.$store.commit(Types.HOME_CHANGENAME,this.payload);
-            },
-            rightClick(){
-
-            }
         }
 
     }
 
 </script>
 <style rel="stylesheet/less" type="text/less" lang="less">
+    @import "../../theme/var";
     @import "../../theme/style";
 
     .item-wrap {
@@ -298,6 +293,7 @@
         }
 
         .bottom {
+            color: @main-font-color;
             position: relative;
             &:after {
                 content: '';
@@ -314,6 +310,9 @@
             display: flex;
             height: .7rem;
             align-items: center;
+            .mygood{
+                color: red;
+            }
             .good {
                 position: relative;
                 &:after {

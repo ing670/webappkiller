@@ -7,7 +7,7 @@ import createLogger from 'vuex/dist/logger'
 import home from './home';
 Vue.use(Vuex)
 const debug = process.env.NODE_ENV !== 'production'
-
+console.log(debug);
 const store = new Vuex.Store({
 
   modules: {

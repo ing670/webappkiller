@@ -1,11 +1,12 @@
 <template>
 
     <Page>
-        <Downmemu slot="header"></Downmemu>
+        <Downmemu slot="header" :leftMenu="home.leftMenu" :rightMenu="home.rightMenu" @itemLeftClick="itemLeftClick"
+                  @itemRightClick="itemRightClick"></Downmemu>
 
         <InfiniteLoader :onLoading="loadMore">
-        <item v-for="i in home.list" :payload="i" ></item>
-        </InfiniteLoader >
+            <item v-for="i in home.list" :payload="i" @leftClick="$store.dispatch('leftClick',i)"></item>
+        </InfiniteLoader>
         <Button class="diary-button" slot='footer' @click="newDiary">
             <IconText position="left" fontCode="e145" text="新建日志"></IconText>
         </Button>
@@ -35,33 +36,60 @@
                 showOverlay: false,
                 showLeftMenu: false,
                 showRightMenu: false,
-                home:this.$store.state.home,
-                pageNum:0,
-                pageSize:3,
-                range:0,
-                templateId:0,
+                home: this.$store.state.home,
+                pageNum: 1,
+                pageSize: 3,
+                range: 0,
+                templateId: 0,
 
             };
         },
 
         created(){
-            console.log(this.$store.state.home.list);
-            this.$http.crossDomain=true;
-            this.$http.get("http://115.29.39.62/logger/diaryQuery/getAllDiary?pageNum="+this.pageNum+"&pageSize="+this.pageSize+"&range="+this.range+"&templateId="+this.templateId+"").then((successResponse)=>{
-             this.$store.commit(Types.HOME_GET_ALL_DIARY,successResponse);
+//            this.$http.crossDomain=true;
+//            this.$http.get("/diaryQuery/getAllDiary?pageNum="+this.pageNum+"&pageSize="+this.pageSize+"&range="+this.range+"&templateId="+this.templateId+"").then((successResponse)=>{
+//             this.$store.commit(Types.HOME_GET_ALL_DIARY,successResponse);
+//            });
+            this.$store.dispatch('queryDiary', {
+                pageNum: this.pageNum,
+                pageSize: this.pageSize,
+                range: this.range,
+                templateId: this.templateId
             });
+            this.$store.dispatch('getTemplates');
         },
 
         methods: {
             loadMore(loader){
-                setTimeout(()=>{
+                setTimeout(() => {
                     this.pageNum++;
-                    this.$http.get("http://115.29.39.62/logger/diaryQuery/getAllDiary?pageNum="+this.pageNum+"&pageSize="+this.pageSize+"&range="+this.range+"&templateId="+this.templateId+"").then((successResponse)=>{
-                        loader.loading=false;
-                        this.$store.commit(Types.HOME_GET_ALL_DIARY,successResponse);
-
+                    this.$http.get("/diaryQuery/getAllDiary?pageNum=" + this.pageNum + "&pageSize=" + this.pageSize + "&range=" + this.range + "&templateId=" + this.templateId + "").then((successResponse) => {
+                        loader.loading = false;
+                        this.$store.commit(Types.HOME_GET_ALL_DIARY, successResponse);
+                    });
+                }, 200)
+            },
+            itemLeftClick({leftSelected, rightSelected}){
+                this.pageNum = 1;
+                this.range = leftSelected.type;
+                this.templateId = rightSelected.id;
+                this.$store.dispatch('queryDiary', {
+                    pageNum: this.pageNum,
+                    pageSize: this.pageSize,
+                    range: this.range,
+                    templateId: this.templateId
                 });
-            }, 200)
+            },
+            itemRightClick({leftSelected, rightSelected}){
+                this.pageNum = 1;
+                this.range = leftSelected.type;
+                this.templateId = rightSelected.id;
+                this.$store.dispatch('queryDiary', {
+                    pageNum: this.pageNum,
+                    pageSize: this.pageSize,
+                    range: this.range,
+                    templateId: this.templateId
+                });
             },
             newDiary(){
                 this.$router.push('/diaryTemplateList');
@@ -89,28 +117,6 @@
 
     .wk-page {
         background: @main-page-bgcolor;
-    }
-
-    .select-left-list, .select-right-list {
-        background: #fff;
-    }
-
-    .selected-item {
-        height: 1rem;
-        line-height: 1rem;
-        padding-left: .3rem;
-        padding-right: .3rem;
-        position: relative;
-        &:after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 1px;
-            bottom: 0;
-            left: 0;
-            transform: scaleY(0.5);
-            background: @main-border-color;
-        }
     }
 
     .diary-button {
