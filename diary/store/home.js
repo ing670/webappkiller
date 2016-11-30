@@ -27,7 +27,7 @@ const home = {
         [Types.HOME_CHANGENAME](state, data){
             state.list.find((it) => it.id == data.id).userName = data.userName;
         },
-        [Types.HOME_GET_ALL_DIARY](state, n){
+        [Types.HOME_UPDATE_DIARY](state, n){
             state.list = state.list.concat(n.list);
         },
         [Types.HOME_GOOD](state, n){
@@ -67,8 +67,11 @@ const home = {
         queryDiary(ctx, {pageNum, pageSize, range, templateId}){
             ctx.commit(Types.HOME_LOADING, true);
             myaxio.get("/diaryQuery/getAllDiary?pageNum=" + pageNum + "&pageSize=" + pageSize + "&range=" + range + "&templateId=" + templateId + "").then((successResponse) => {
-                ctx.commit(Types.HOME_GET_ALL_DIARY, successResponse);
-                ctx.commit(Types.HOME_LOADING, false);
+                if(successResponse){
+                    ctx.commit(Types.HOME_UPDATE_DIARY, successResponse);
+                    ctx.commit(Types.HOME_LOADING, false);
+                }
+
             });
         }
     }

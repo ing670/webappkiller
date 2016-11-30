@@ -35,16 +35,16 @@
             flex: 1;
             overflow-y: scroll;;
         }
-        .wk-pageloading{
-            background-color:rgba(0, 0, 0, 0);
+        .wk-pageloading {
+            background-color: rgba(0, 0, 0, 0);
 
-            .preloader-wrapper{
+            .preloader-wrapper {
                 position: absolute;
                 left: 50%;
                 top: 50%;
                 width: .8rem;
                 height: .8rem;
-                transform: translate3d(-50%,-50%,0);
+                transform: translate3d(-50%, -50%, 0);
                 padding: .4rem;
                 border-radius: .1rem;
             }
@@ -63,35 +63,45 @@
 <script>
     import Overlay from 'components/overlay'
     import Circular from 'components/circular'
+    //默认情况下，showtime=0，closeTIme=0，但是绑定数据之后，closeTime 就等于1了
     export default{
         props: {
-            loading:{
-                type:Boolean,
-                default:false
+            loading: {
+                type: Boolean,
+                default: false
             }
         },
         data(){
-          return {showTime:1 ,closeTime:0}
+            return {
+                showTime: 1,
+                closeTime: 0,
+            }
         },
-        computed:{
+        computed: {
             ishow(){
-
-                if(this.showTime>this.closeTime){
+                if (this.loading==true) {
+                    this.showTime++
+                } else {
+                    this.closeTime++
+                }
+                console.log('this.showTime'+this.showTime);
+                console.log('this.closeTime'+this.closeTime);
+                if (this.showTime > this.closeTime) {
                     return true;
-                }else{
+                } else {
                     return false;
                 }
             }
         },
-        watch:{
-            loading (n,o){
-                if(n==true) this.showTime++;
-                console.log(this.showTime);
-                if(n==false) this.closeTime++;
-                console.log(this.closeTime);
-
-            }
-        },
+//        watch:{
+//            loading (n,o){
+//                if(n==true) this.showTime++;
+//                console.log(this.showTime);
+//                if(n==false) this.closeTime++;
+//                console.log(this.closeTime);
+//
+//            }
+//        },
         components: {
             Overlay, Circular
         }

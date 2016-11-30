@@ -61,7 +61,9 @@
                     this.pageNum++;
                     this.$http.get("/diaryQuery/getAllDiary?pageNum=" + this.pageNum + "&pageSize=" + this.pageSize + "&range=" + this.range + "&templateId=" + this.templateId + "").then((successResponse) => {
                         loader.loading = false;
-                        this.$store.commit(Types.HOME_GET_ALL_DIARY, successResponse);
+                        if(successResponse){
+                            this.$store.commit(Types.HOME_UPDATE_DIARY, successResponse);
+                        }
                     });
                 }, 1000)
             },
