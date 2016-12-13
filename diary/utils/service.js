@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const debug = process.env.NODE_ENV !== 'production'
 let myaxio={};
-var token;
+var token='';
 if (debug) {
     myaxio = axios.create({
         baseURL: 'http://115.29.39.62/logger',
@@ -18,9 +18,9 @@ if (debug) {
 
 function GetQueryString(name)
 {
-    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-    var r = window.location.search.substr(1).match(reg);
-    if(r!=null)return  unescape(r[2]); return null;
+    var reg = new RegExp("(^|\\?|&)"+ name +"=([^&]*)(\\s|&|$)", "i");
+    if (reg.test(location.href)) return unescape(RegExp.$2.replace(/\+/g, " "));
+    return "";
 }
 //全局请求配置
 myaxio.interceptors.request.use(function (config) {

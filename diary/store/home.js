@@ -28,12 +28,12 @@ const home = {
             state.list.find((it) => it.id == data.id).userName = data.userName;
         },
         [Types.HOME_UPDATE_DIARY](state, n){
-            state.list = state.list.concat(n.list);
+            state.list = state.list.concat(n);
         },
         [Types.HOME_GOOD](state, n){
             let it = state.list.find((it) => it.id == n.id);
-            it.likeNum = n.likeTotal;
-            it.isLike == 0 ? it.isLike = 1 : it.isLike = 0;
+            it.like.likeNum = n.likeTotal;
+            it.like.isLike == 0 ? it.like.isLike = 1 : it.like.isLike = 0;
         },
         [Types.HOME_UPDATE_TEMPLATES](state, n){
             state.rightMenu = state.rightMenu.concat(n.list);
@@ -45,7 +45,7 @@ const home = {
     actions: {
         leftClick(ctx, {id}){
             ctx.commit(Types.HOME_LOADING, true);
-            myaxio.post('/diaryLike/' + id).then((successResponse) => {
+            myaxio.post('/diaryLike/' + id+'?').then((successResponse) => {
                 successResponse.id = id;
                 console.log(successResponse);
                 ctx.commit(Types.HOME_GOOD, successResponse);
@@ -59,7 +59,6 @@ const home = {
                 console.log(successResponse)
                 ctx.commit(Types.HOME_UPDATE_TEMPLATES, successResponse);
                 ctx.commit(Types.HOME_LOADING, false);
-
             })
         },
         queryDiary(ctx, {pageNum, pageSize, range, templateId}){

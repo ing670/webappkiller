@@ -26,9 +26,9 @@
             <img  v-for='it in images':src="it.fileKey"/>
         </div>
         <div class="bottom">
-            <div class="good" :class="payload.isLike?'mygood':''">
+            <div class="good" :class="payload.like.isLike==1?'mygood':''">
                 <icon-text @click="$emit('leftClick')" fontFamily="icomoon"
-                           fontCode="E90E" :text="payload.likeNum" position="left"></icon-text>
+                           fontCode="E90E" :text="payload.like.likeNum" position="left"></icon-text>
             </div>
             <div>
                 <icon-text @click="$emit('rightClick')"  fontFamily="icomoon"

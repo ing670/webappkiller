@@ -40,7 +40,7 @@
                 pageNum: 1,
                 pageSize: 3,
                 range: 0,
-                templateId: 0,
+                templateId: '',
 
             };
         },

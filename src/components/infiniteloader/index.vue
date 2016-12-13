@@ -47,6 +47,8 @@
                 if(this.container){
                     this.container.addEventListener('scroll', this.handlerScroll, false)
                 }else {
+                    console.log(this.$refs.container);
+
                     this.$refs.container.addEventListener('scroll', this.handlerScroll, false)
                 }
             },
@@ -63,6 +65,7 @@
         },
 
         mounted(){
+            console.log('addScrollListener');
             this.addScrollListener();
         },
         beforeDestroy () {
@@ -84,6 +87,7 @@
         left: 0;
         right: 0;
         bottom: 0;
+        overflow-y: scroll;
         .loader{
             display: flex;
             justify-content: center;
