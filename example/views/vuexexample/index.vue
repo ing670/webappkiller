@@ -38,7 +38,7 @@
         created(){
           this.$http.crossDomain=true;
           this.$http.get("/api").then((successResponse)=>{
-            console.log(successResponse)
+            //console.log(successResponse)
             this.$store.commit(Types.UPDATE,successResponse.data.weatherinfo);
           },(errResponse)=>{
 

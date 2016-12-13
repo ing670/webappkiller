@@ -52,7 +52,6 @@
         }
         },
         mounted(){
-          console.log(this)
         },
         components:{
         Picker,

@@ -60,7 +60,6 @@ export default {
       this.modal.show = true
     },
     showActionSheet (flag) {
-      console.log(this.$refs.as.show)
       this.$refs.as.show = true
       this.$refs.as.showCancel = !flag
     }

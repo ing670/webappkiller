@@ -108,6 +108,10 @@
                 showRightMenu: false,
             }
         },
+        mounted(){
+          console.log('打印store');console.log(this.$store);
+
+        },
         methods: {
             leftClick(){
                 this.showOverlay = true;

@@ -1,6 +1,6 @@
 <template>
 <div class="wk-range ">
-  <input ref='inputrange' @input="onInput" type="range" :step="step" :min="min" :max="max" v-model="value" :style="{'background':'linear-gradient(to right, #ff5252 ' + per + '%,#ff5252 ' + per + '%, #b9b9b9 ' +per + '%)'}">
+  <input ref='inputrange' @input="onInput" type="range" :step="step" :min="min" :max="max" v-model="value" :style="{'background':'-webkit-linear-gradient(to right, #ff5252 ' + per + '%,#ff5252 ' + per + '%, #b9b9b9 ' +per + '%)','background':'-o-linear-gradient(to right, #ff5252 ' + per + '%,#ff5252 ' + per + '%, #b9b9b9 ' +per + '%)','background':'-moz-linear-gradient(to right, #ff5252 ' + per + '%,#ff5252 ' + per + '%, #b9b9b9 ' +per + '%)','background':'linear-gradient(to right, #ff5252 ' + per + '%,#ff5252 ' + per + '%, #b9b9b9 ' +per + '%)'}">
 </div>
 </template>
 

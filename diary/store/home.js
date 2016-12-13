@@ -36,7 +36,7 @@ const home = {
             it.like.isLike == 0 ? it.like.isLike = 1 : it.like.isLike = 0;
         },
         [Types.HOME_UPDATE_TEMPLATES](state, n){
-            state.rightMenu = state.rightMenu.concat(n.list);
+            state.rightMenu = state.rightMenu.concat(n);
         },
         [Types.HOME_LOADING](state, n){
             state.loading = n;
@@ -69,8 +69,6 @@ const home = {
                 if(successResponse&&successResponse.length>0){
                     ctx.commit(Types.HOME_UPDATE_DIARY, successResponse);
                 }
-
-
             });
         }
     }

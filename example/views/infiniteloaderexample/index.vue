@@ -1,11 +1,12 @@
 <template>
-    <div>
+    <Page>
         <InfiniteLoader :onLoading="loadMore">
             <div>
                 <div v-for="i in items">{{i}}</div>
             </div>
         </InfiniteLoader>
     </div>
+    </Page>
 </template>
 <style lang="less">
     .page {
@@ -13,21 +14,21 @@
     }
 </style>
 <script>
-    import {InfiniteLoader} from 'components'
+    import {InfiniteLoader,Page} from 'components'
     export default{
         data(){
             return {
                 test: "fux",
                 loading: false,
-                items: [1, 2, 3, 4, 5, 1, 2, 3, 1, 2, 3, 4, 5, 1, 2, 3]
+                items: [1, 2, 3, 4, 5, 1, 2, 3, 1, 2, 3, 4, 5, 1, 2, 3,1, 2, 3, 4, 5, 1, 2, 3, 1, 2, 3, 4, 5, 1, 2, 3,1, 2, 3, 4, 5, 1, 2, 3, 1, 2, 3, 4, 5, 1, 2, 3]
             }
         },
         watch: {
             loading(n, o){
-                console.log('new value===>' + n)
+                //console.log('new value===>' + n)
             },
             test(n, o){
-                console.log('new value===>' + n)
+                //console.log('new value===>' + n)
             }
         },
         methods: {
@@ -46,7 +47,7 @@
             }
         },
         components: {
-            InfiniteLoader
+            InfiniteLoader,Page
         }
     }
 

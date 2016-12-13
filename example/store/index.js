@@ -30,7 +30,6 @@ const m1 = {
   mutations: {
     [Types.ADD](state, {v}){
       state.count += v
-      console.log(state.count);
     },
     [Types.UPDATE](state,weatherinfo){
       state.weatherinfo = weatherinfo
