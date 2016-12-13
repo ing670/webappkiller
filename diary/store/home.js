@@ -41,8 +41,6 @@ const home = {
         [Types.HOME_LOADING](state, n){
             state.loading = n;
         },
-
-
     },
     actions: {
         leftClick(ctx, {id}){
@@ -57,7 +55,7 @@ const home = {
         },
         getTemplates(ctx){
             ctx.commit(Types.HOME_LOADING, true);
-            myaxio.get('/template/list?client=app').then((successResponse) => {
+            myaxio.get('/template/list?client=select').then((successResponse) => {
                 console.log(successResponse)
                 ctx.commit(Types.HOME_UPDATE_TEMPLATES, successResponse);
                 ctx.commit(Types.HOME_LOADING, false);
@@ -67,10 +65,12 @@ const home = {
         queryDiary(ctx, {pageNum, pageSize, range, templateId}){
             ctx.commit(Types.HOME_LOADING, true);
             myaxio.get("/diaryQuery/getAllDiary?pageNum=" + pageNum + "&pageSize=" + pageSize + "&range=" + range + "&templateId=" + templateId + "").then((successResponse) => {
-                if(successResponse){
+                console.log(successResponse);
+                ctx.commit(Types.HOME_LOADING, false);
+                if(successResponse&&successResponse.length>0){
                     ctx.commit(Types.HOME_UPDATE_DIARY, successResponse);
-                    ctx.commit(Types.HOME_LOADING, false);
                 }
+
 
             });
         }

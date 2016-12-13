@@ -73,7 +73,7 @@
         },
         data(){
             return {
-                showTime: 1,
+                showTime: 0,
                 closeTime: 0,
             }
         },
@@ -84,8 +84,9 @@
                 } else {
                     this.closeTime++
                 }
-                console.log('this.showTime'+this.showTime);
-                console.log('this.closeTime'+this.closeTime);
+                console.log('this.showTime==>'+this.showTime)
+                console.log('this.closeTime==>'+this.closeTime)
+
                 if (this.showTime > this.closeTime) {
                     return true;
                 } else {

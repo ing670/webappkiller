@@ -52,7 +52,7 @@
                 range: this.range,
                 templateId: this.templateId
             });
-            this.$store.dispatch('getTemplates');
+            //this.$store.dispatch('getTemplates');
         },
 
         methods: {

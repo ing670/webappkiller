@@ -26,10 +26,10 @@
                 type: String,
                 default: "material",
             },
-            fontCode: {
-                type: String,
-                default: "e859"
-            },
+                fontCode: {
+                    type: String,
+                    default: "e859"
+                },
         },
         computed: {
             fCode(){
