@@ -57,7 +57,7 @@
 <style lang="less" rel="stylesheet/less" type="less">
 
     .wk-button {
-        color: #fff;
+        color: #000;
         border-radius: .04rem;
         height: .72rem;
         line-height: .72rem;

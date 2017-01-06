@@ -50,6 +50,8 @@ export default {
     background-color: #fff;
     height: .96rem;
     border-bottom:1px solid #eee;
+    padding-left: .30rem;
+    padding-right: .30rem;
   //&:after{
      //  content: "";
      //  position: absolute;
@@ -62,8 +64,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-left: .15rem;
-    padding-right: .15rem;
+
   }
   .title{
     margin-left: .1rem;

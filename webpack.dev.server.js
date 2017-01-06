@@ -3,8 +3,8 @@
  */
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
-//var config = require('./webpack/example');
-var config = require('./webpack/diary');
+var config = require('./webpack/example');
+//var config = require('./webpack/diary');
 //config.entry.app.unshift("webpack-dev-server/client?http://localhost:3000/", "webpack/hot/dev-server");
 var server = new WebpackDevServer(webpack(config), {
   quiet: false,

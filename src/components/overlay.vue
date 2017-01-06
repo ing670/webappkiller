@@ -44,5 +44,6 @@
         top: 0;
         bottom: 0;
         background-color: rgba(0, 0, 0, 0.4);
+        overflow: hidden;
     }
 </style>

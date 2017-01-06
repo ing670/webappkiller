@@ -1,16 +1,16 @@
 <template>
     <header class="wk-headerbar">
         <slot name="left">
-            <icon-text class="wk-icontext-left" :text="leftText" :icon-class="leftIcon" :position="leftTextPosition"
-                       @on-whole="$emit('onLeft')"></icon-text>
+            <icon-text class="wk-icontext-left" :text="leftText" :fontCode="leftFontCode" :position="leftTextPosition"
+                       @click="$emit('onLeft')"></icon-text>
         </slot>
 
         <slot name="title">
             <span v-text="title" class="wk-headerbar-tile" @click="$emit('onTitle')"></span>
         </slot>
         <slot name="right">
-            <icon-text class="wk-icontext-right" :text="rightText" :icon-class="rightIcon" :position="rightTextPosition"
-                       @on-whole="$emit('onRight')"></icon-text>
+            <icon-text class="wk-icontext-right" :text="rightText" :fontCode="rightFontCode" :position="rightTextPosition"
+                       @click="$emit('onRight')"></icon-text>
         </slot>
     </header>
 </template>
@@ -23,19 +23,18 @@
             title: {
                 default: '头部',
             },
-            leftClass: {
-                default: 'icontext--left',
-            },
             leftText: {
                 default: '',
             },
             leftTextPosition: {
                 default: 'right',
             },
-            rightClass: {
-                default: 'icontext--right',
+            leftFontCode:{
+                default: '',
             },
-
+            rightFontCode:{
+                default: '',
+            },
             rightText: {
                 default: '',
             },
@@ -53,6 +52,9 @@
         .wk-headerbar-tile {
             flex: 2;
             text-align: center;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
         }
         display: flex;
         align-items: center;
@@ -65,15 +67,14 @@
         z-index: 999;
 
         .wk-icontext-left {
-            margin-left: .16rem;
-            margin-right: .16rem;
             flex: 1;
             text-align: left;
-
+            .wk-icon{
+                font-size: .48rem;
+            }
         }
         .wk-icontext-right {
-            margin-left: .16rem;
-            margin-right: .16rem;
+
             flex: 1;
             text-align: right;
 

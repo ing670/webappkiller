@@ -4,28 +4,40 @@ import FastClick from 'fastclick';
 import root from 'components/app';
 import router from './router';
 import {sync} from 'vuex-router-sync'
-import axios from './utils/service';
+import axios from 'axios';
 import bridge from 'utils/bridge';
-import moment from 'moment';
+
 
 FastClick.attach(document.body);
-moment.locale('zh-cn')
-!function (n) {
+!function (w,cb) {
     //i对应的数码像素
-    var e = n.document, t = e.documentElement, i = 750, d = i / 100, o = "orientationchange" in n ? "orientationchange" : "resize", a = function () {
-        var n = t.clientWidth || 320;
-        n > 750 && (n = 750), t.style.fontSize = n / d + "px"
-    };
-    a();
-    e.addEventListener && (n.addEventListener(o, a, !1), e.addEventListener("DOMContentLoaded", a, !1))
-}(window);
+    var e = w.document,
+        t = e.documentElement,
+        i = 750, d = i / 100, o = "orientationchange" in w ? "orientationchange" : "resize",
+        a = function () {
+            var n = t.clientWidth || 320;
+            n > 750 && (n = 750), t.style.fontSize = n / d + "px";
+            w.loading=t.querySelector('.pre-wk-pageloading');
+            w.loading.style.display='block';
+            cb();
+        };
+    e.addEventListener && (w.addEventListener(o, a, !1), e.addEventListener("DOMContentLoaded", a, !1))
+}(window,()=>{
+    Vue.prototype.$http = axios;
+    router.beforeEach((to, from, next) => {
+        window.loading.style.display='block'
+        next();
+    })
+    router.afterEach((to, from, next) => {
+        window.loading.style.display='none'
+    })
+    sync(store, router);
 
-//全局请求配置
-Vue.prototype.$http=axios;
-sync(store, router);
-const app = new Vue({
-    store,
-    router,
-    ...root,
+    const app = new Vue({
+        store,
+        router,
+        ...root,
+    });
+    app.$mount('#app');
 });
-app.$mount('#app');
+
