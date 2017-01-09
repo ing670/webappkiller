@@ -1,6 +1,6 @@
 <template>
     <Page>
-        <header-bar slot="header" title="vue-pure" right-text="组件" right-icon=""></header-bar>
+        <header-bar slot="header" title="webappkiller" right-text="" right-icon=""></header-bar>
         <cell
                 class="wk-cell-padding"
                 v-for="item in cellList"
@@ -10,7 +10,6 @@
             <Icon slot="startIcon" size=".48rem" :iconColor="item.startIconColor" :fontCode="item.startIconCode"></Icon>
             <Icon slot="endIcon" size=".48rem" iconColor="#000" fontCode="e5c8"></Icon>
         </cell>
-        <header-bar slot="footer" title="vue-pure" right-text="组件" right-icon=""></header-bar>
     </Page>
 </template>
 <script>
@@ -61,12 +60,7 @@
                         link: '/buttons',
                         startIconCode: 'e191',
                     },
-                    {
-                        title: 'badge',
-                        value: '角标(完成)',
-                        link: '/badge',
-                        startIconCode: 'e85d',
-                    },
+
                     {
                         title: 'Icons',
                         value: '图标集合(完成)',
@@ -90,12 +84,6 @@
                         title: 'IconText',
                         value: '图标 + 文字(完成)',
                         link: '/icontext',
-                        startIconCode: 'e191',
-                    },
-                    {
-                        title: 'Spinner',
-                        value: '来自loaders.css的加载小动画',
-                        link: '/spinner',
                         startIconCode: 'e191',
                     },
                     {

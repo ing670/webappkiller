@@ -1,39 +1,43 @@
 <template>
-  <Page>
+    <Page>
+        <Page v-if="toolActive === 0 ">
+            <HeaderBar slot="header" :title="tab1" leftFontCode="e5c4" @onLeft="back"></HeaderBar>
 
-    <div v-if="toolActive === 0 " >
-      首页信息
-    </div>
-    <div v-if="toolActive === 1 " >
-      人员信息
-    </div>
-    <div v-if="toolActive === 2 " >
-      个人信息
-    </div>
-  <bottom-nav slot='footer':active="toolActive" @nav-change="tabClick">
-    <bottom-nav-item icon="home" title="首页" ></bottom-nav-item>
-    <bottom-nav-item icon="explore" title="发现"></bottom-nav-item>
-    <bottom-nav-item icon="person" title="我的"></bottom-nav-item>
-  </bottom-nav>
-  </Page>
+        </Page>
+        <Page v-if="toolActive === 1 ">
+            <HeaderBar slot="header" :title="tab2" leftFontCode="e5c4" @onLeft="back"></HeaderBar>
+
+        </Page>
+        <Page v-if="toolActive === 2 ">
+            <HeaderBar slot="header" :title="tab3" leftFontCode="e5c4" @onLeft="back"></HeaderBar>
+        </Page>
+        <bottom-nav slot='footer' :active="toolActive" @nav-change="tabClick">
+            <bottom-nav-item :title="tab1"></bottom-nav-item>
+            <bottom-nav-item :title="tab2"></bottom-nav-item>
+            <bottom-nav-item :title="tab3"></bottom-nav-item>
+        </bottom-nav>
+    </Page>
 </template>
 
 <script>
-import {BottomNav,BottomNavItem,Page} from 'components'
-export default {
-  data () {
-    return {
-      toolActive: 0
+    import {BottomNav, BottomNavItem, Page, HeaderBar} from 'components'
+    export default {
+        data () {
+            return {
+                toolActive: 0,
+                tab1: 'tab1',
+                tab2: 'tab2',
+                tab3: 'tab3',
+            }
+        },
+        methods: {
+            tabClick (index) {
+                this.toolActive = index
+            },
+            back () {
+                window.history.back()
+            }
+        },
+        components: {BottomNav, BottomNavItem, Page, HeaderBar}
     }
-  },
-  methods: {
-    tabClick (index) {
-      this.toolActive = index
-    },
-    back () {
-      window.history.back()
-    }
-  },
-  components: {BottomNav,BottomNavItem,Page}
-}
 </script>

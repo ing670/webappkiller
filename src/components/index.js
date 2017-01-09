@@ -3,7 +3,6 @@ import Cell from './cell';
 import IconText from './icontext';
 import HeaderBar from './header';
 import Icon from './icon';
-import Badge from './badge';
 import {Button} from './button';
 import InfiniteLoader from './infiniteloader';
 import Toast from './toast.vue'
@@ -22,6 +21,7 @@ import Overlay from './overlay.vue'
 import Page from './page'
 import TabBar from './tabbars/TabBar'
 import TabBarItem from './tabbars/TabBarItem.vue'
+import TabBarContent from './tabbars/TabBarContent.vue'
 import BottomNav from './bottomnav/BottomNav'
 import BottomNavItem from './bottomnav/BottomNavItem.vue'
 import Popup from './popup/popup.vue'
@@ -37,6 +37,7 @@ export {
     BottomNav,
     TabBar,
     TabBarItem,
+    TabBarContent,
     Overlay,
     Modal,
     ActionSheet,
@@ -53,7 +54,6 @@ export {
     Toast,
     InfiniteLoader,
     Button,
-    Badge,
     Icon,
     Grid,
     Cell,

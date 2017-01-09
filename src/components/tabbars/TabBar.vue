@@ -43,7 +43,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background: @barcolor;
+        background:#000;
         color: #FFF;
         text-align: center;
         font-size: .32rem;
@@ -58,7 +58,7 @@
         left: 0;
         bottom: 0;
         height: .06rem;
-        background: @red;
+        background: #FFF;
         transition: all .3s;
         backface-visibility: hidden;
         -webkit-perspective: 1000;

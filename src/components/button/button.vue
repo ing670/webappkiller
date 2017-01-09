@@ -2,7 +2,7 @@
     <ripple>
         <a href="javascript:;" @click="$emit('click')" class="js-wk-button wk-button" ref="button">
             <slot>
-                <span class="wk-button-text" :style="{'color':textColor}" v-if="text">{{text}}</span>
+                <span class="wk-button-text"  v-if="text">{{text}}</span>
             </slot>
         </a>
     </ripple>
@@ -57,7 +57,6 @@
 <style lang="less" rel="stylesheet/less" type="less">
 
     .wk-button {
-        color: #000;
         border-radius: .04rem;
         height: .72rem;
         line-height: .72rem;

@@ -4,6 +4,8 @@
 
 import TabBar from './TabBar.vue'
 import TabBarItem from './TabBarItem.vue'
+import TabBarContent from './TabBarContent.vue'
+
 
 
 //import ButtonArea from './buttonArea.vue'
@@ -13,5 +15,6 @@ import TabBarItem from './TabBarItem.vue'
 export default {}
 export {
     TabBar,
-    TabBarItem
+    TabBarItem,
+    TabBarContent
 };

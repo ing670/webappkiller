@@ -1,18 +1,18 @@
 <template>
-<div>
+<Page>
+  <HeaderBar slot="header" title="9宫格组件" leftFontCode="e5c4" @onLeft="back"></HeaderBar>
   <div>
-    asdasdas
     <!--<grid></grid>-->
-    <grid :list="gdata" rowHeight="2"  columnCount="2" @on-item="itclick">
+    <grid :list="gdata" rowHeight="3"  columnCount="3" @on-item="itclick">
     </grid>
     <!--<grid :list="orderGrid" @on-item=""></grid>-->
     <!--<grid :list="doGrid"  @on-item=""></grid>-->
     <!--<grid c="footergrid" :list="navGrid" @on-item=""></grid>-->
   </div>
-</div>
+</Page>
 </template>
 <script>
-import { Grid} from 'components';
+import { Grid,Page,HeaderBar} from 'components';
 //import { orderGrid, doGrid, navGrid } from './grid';
 
 export default {
@@ -23,52 +23,52 @@ export default {
           classNames:"abc",
           iconColor: 'red',
           position: 'bottom',
-          text: '看看',
+          text: '111',
         },
         {
           iconColor: '#333',
           position: 'bottom',
-          text: '待付款',
+          text: '222',
         },
         {
           iconColor: '#333',
           position: 'bottom',
-          text: '待付款',
+          text: '333',
         },
         {
           iconColor: '#333',
           position: 'bottom',
-          text: '待付款',
+          text: '444',
         },
         {
           iconColor: '#333',
           position: 'bottom',
-          text: '待付款',
+          text: '555',
         },
         {
           iconColor: '#333',
           position: 'bottom',
-          text: '待付款',
+          text: '666',
         },
         {
           iconColor: '#333',
           position: 'bottom',
-          text: '待付款',
+          text: '777',
         },
         {
           iconColor: '#333',
           position: 'bottom',
-          text: '待付款',
+          text: '888',
         },
         {
           iconColor: '#333',
           position: 'bottom',
-          text: '待付款',
+          text: '999',
         },
          {
           iconColor: '#333',
           position: 'bottom',
-          text: '待付款',
+          text: '000',
         },
       ]
     }
@@ -76,10 +76,13 @@ export default {
   methods:{
     itclick(it){
       alert(JSON.stringify(it))
-    }
+    },
+      back(){
+        window.history.back();
+      }
   },
   components: {
-    Grid,
+    Grid,Page,HeaderBar
 
   },
 };

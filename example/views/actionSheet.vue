@@ -79,7 +79,7 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="less">
 .center-block{
   display: flex;
   align-items: center;

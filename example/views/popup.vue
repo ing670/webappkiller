@@ -133,8 +133,7 @@
     }
 
     .vc-overlay-fade-enter-active, .vc-overlay-fade-leave-active {
-        transition: all .5s linear;
-        opacity: 1;
+        transition: all .3s linear;
     }
 
 

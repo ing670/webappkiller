@@ -11,7 +11,6 @@ const router= new VueRouter({
   routes: [
     {path: '/buttons', component:() => System.import("../views/buttons")},
 
-    {path: '/badge', component: () => System.import('../views/badge')},
     //{path: '/badge', component: badge},
     {path: '/icon', component: () => System.import('../views/vuexicon')},
     {path: '/list', component: () => System.import('../views/list')},
@@ -27,7 +26,6 @@ const router= new VueRouter({
     {path: '/grid', component: () => System.import('../views/grid')},
     {path: '/icontext', component: () => System.import('../views/iconText')},
     {path: '/headerbar', component: () => System.import('../views/headerBar')},
-    {path: '/spinner', component:  () => System.import('../views/spinner')},
     {path: '/vuexexample', component: () => System.import('../views/vuexexample')},
     {path: '/infiniteloader', component: () => System.import('../views/infiniteloaderexample')},
     {path: '/form', component: () => System.import('../views/form')},
