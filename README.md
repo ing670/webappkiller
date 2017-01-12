@@ -26,7 +26,7 @@ npm run dev
 - 事件暴露使用$emit('事件名称')
 - 如果需要绑定到真实dom上，请使用$事件名称.native，比如@click.native
 ======
-![image](picture url)
+![image](picture https://github.com/ing670/webappkiller/blob/master/doc/imgs/abc.png)
 
 
 
