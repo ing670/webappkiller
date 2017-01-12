@@ -17,7 +17,7 @@ FastClick.attach(document.body);
         a = function () {
             var n = t.clientWidth || 320;
             n > 750 && (n = 750), t.style.fontSize = n / d + "px";
-            w.loading=t.querySelector('.pre-wk-pageloading');
+            w.loading=t.querySelector('.wk-preloader-wrapper');
             w.loading.style.display='block';
             cb();
         };
