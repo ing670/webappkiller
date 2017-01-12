@@ -14,6 +14,9 @@ npm install
 ```
 npm run dev
 ```
+```
+http://localhost:8888/#/
+```
 文件介绍
 -基础组件都是放在了src下面
 -启动命令：npm run dev
