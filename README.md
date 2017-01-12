@@ -25,8 +25,8 @@ npm run dev
 至于icon的大小，text的大小，颜色，统一使用css来去控制
 - 事件暴露使用$emit('事件名称')
 - 如果需要绑定到真实dom上，请使用$事件名称.native，比如@click.native
-======
-![image](picture https://github.com/ing670/webappkiller/blob/master/doc/imgs/abc.png)
+=====
+![image](https://github.com/ing670/webappkiller/blob/master/doc/imgs/abc.png)
 
 
 
