@@ -2,13 +2,13 @@
 
 <div class="wk-cell js-qlc-cell" @click="$emit('onLink')" >
 
-  <div >
+  <div v-if="title">
   <slot name='start'>
     <span class="title" >{{title}}</span>
   </slot>
   </div>
   <slot></slot>
-  <div >
+  <div v-if="value">
   <slot name='end'>
     <span class="value" >{{value}}</span>
   </slot>
