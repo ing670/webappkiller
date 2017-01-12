@@ -1,14 +1,16 @@
 <template>
 
 <div class="wk-cell js-qlc-cell" @click="$emit('onLink')" >
-  <div v-if='title'>
-  <slot name='startIcon'>
+
+  <div >
+  <slot name='start'>
+    <span class="title" >{{title}}</span>
   </slot>
-    <span class="title" v-text="title"></span>
   </div>
-  <div v-if='value'>
-    <span class="value" v-text="value"></span>
-  <slot name='endIcon'>
+  <slot></slot>
+  <div >
+  <slot name='end'>
+    <span class="value" >{{value}}</span>
   </slot>
   </div>
 </div>
@@ -16,10 +18,8 @@
 
 </template>
 <script>
-import ripple from '../helpers/ripple.vue'
 
 export default {
-  el:'.js-qlc-cell',
   props: {
     title: {
       default: '',
@@ -31,11 +31,9 @@ export default {
       default: 'black',
     }
   },
-  components:{
-  ripple
-  },
+
   mounted(){
-    console.log(this.$refs.cell)
+    //console.log(this.$refs.cell)
   }
 };
 </script>

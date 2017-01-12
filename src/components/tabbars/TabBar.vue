@@ -44,13 +44,15 @@
         justify-content: space-between;
         align-items: center;
         background:#000;
-        color: #FFF;
         text-align: center;
         font-size: .32rem;
         line-height: .48rem;
         position: relative;
         width: 100%;
         z-index: 100;
+        a{
+            color: #FFF;
+        }
     }
 
     .wk-tab-link-highlight {

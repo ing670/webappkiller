@@ -1,11 +1,10 @@
 <template>
     <Page>
+        <HeaderBar slot="header" title="图标文本" leftFontCode="e5c4" @onLeft="back"></HeaderBar>
         <InfiniteLoader :onLoading="loadMore">
-            <div>
-                <div v-for="i in items">{{i}}</div>
-            </div>
+            <Cell v-for="i in items1">{{i}}</Cell>
         </InfiniteLoader>
-    </div>
+        </div>
     </Page>
 </template>
 <style lang="less">
@@ -14,13 +13,13 @@
     }
 </style>
 <script>
-    import {InfiniteLoader,Page} from 'components'
+    import {InfiniteLoader, Page, Cell, HeaderBar} from 'components'
     export default{
         data(){
             return {
                 test: "fux",
                 loading: false,
-                items: [1, 2, 3, 4, 5, 1, 2, 3, 1, 2, 3, 4, 5, 1, 2, 3,1, 2, 3, 4, 5, 1, 2, 3, 1, 2, 3, 4, 5, 1, 2, 3,1, 2, 3, 4, 5, 1, 2, 3, 1, 2, 3, 4, 5, 1, 2, 3]
+                items1: [111111111111, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13,1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
             }
         },
         watch: {
@@ -32,22 +31,30 @@
             }
         },
         methods: {
+            back(){
+                this.$router.back();
+            },
             loadMore (loader) {
-                setTimeout(function () {
+                var _this  = this;
+                setTimeout(() => {
                         loader.loading = false;
-                        if (this.end < 100) {
-                            for (let i = this.end; i < this.end + 20; i++) {
-                                this.items.push(i + 1)
-                            }
-                        }
-                        this.end += 20
+                        _this.items1=_this.items1.concat(_this.items1);
+                        console.log( _this.items1.length);
+
+//                        var nits=[];
+//                        for (let i = 0; i < 10; i++) {
+//                            _this.items.push(_this.items[i]);
+//                        }
+//
+//                        _this.items=nits.concat([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]);
+                        //console.log(_this.items);
                     },
                     2000
                 )
             }
         },
         components: {
-            InfiniteLoader,Page
+            InfiniteLoader, Page, Cell, HeaderBar
         }
     }
 

@@ -73,7 +73,6 @@ export default {
   width: 100%;
   height: 36px;
   display: flex;
-  position: relative;
   color: @color;
   align-items: center;
   .hairline(bottom, #d3d6db);

@@ -2,7 +2,7 @@
 <span :class="c" @click="$emit('click')">
   <span v-text="text" v-if="position&&position==='right'" @click="$emit('textClick')"></span>
     <span v-text="text" v-if="position&&position==='top'" @click="$emit('textClick')"></span>
-  <icon :fontFamily="fontFamily" :fontCode="fontCode"></icon>
+  <icon :fontFamily="fontFamily" :fontCode="fontCode" :style="{display: fontCode?'inline-block':'none'}"></icon>
   <span v-text="text" v-if="position&&position==='left'" @click="$emit('textClick')"></span>
   <span v-text="text" v-if="position&&position==='bottom'" @click="$emit('textClick')"></span>
 </span>
@@ -16,14 +16,7 @@
         components: {
             Icon
         },
-        methods: {
-            onWhole(){
 
-            },
-            onText(){
-
-            }
-        },
         computed: {
             c(){
                 return 'wk-icontext wk-icon-text-' + this.position + " " + this.classNames;

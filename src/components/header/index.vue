@@ -27,7 +27,7 @@
                 default: '',
             },
             leftTextPosition: {
-                default: 'right',
+                default: 'left',
             },
             leftFontCode:{
                 default: '',
@@ -39,7 +39,7 @@
                 default: '',
             },
             rightTextPosition: {
-                default: 'left',
+                default: 'right',
             },
         },
         components: {
@@ -68,15 +68,23 @@
 
         .wk-icontext-left {
             flex: 1;
+            display: flex;
+            align-items: center;
             text-align: left;
+            justify-content: flex-start;
             .wk-icon{
                 font-size: .48rem;
             }
         }
         .wk-icontext-right {
-
+            display: flex;
+            align-items: center;
             flex: 1;
             text-align: right;
+            justify-content: flex-end;
+            .wk-icon{
+                font-size: .48rem;
+            }
 
         }
     }

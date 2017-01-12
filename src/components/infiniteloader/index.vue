@@ -47,7 +47,7 @@
                 if(this.container){
                     this.container.addEventListener('scroll', this.handlerScroll, false)
                 }else {
-                    console.log(this.$refs.container);
+                    //console.log(this.$refs.container);
 
                     this.$refs.container.addEventListener('scroll', this.handlerScroll, false)
                 }
@@ -65,7 +65,6 @@
         },
 
         mounted(){
-            console.log('addScrollListener');
             this.addScrollListener();
         },
         beforeDestroy () {

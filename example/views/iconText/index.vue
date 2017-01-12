@@ -1,26 +1,24 @@
 <template>
-<div>
-  <h1>字体 + 图标 </h1>
-  <ul>
-    <li>
+<Page>
+  <HeaderBar slot="header" title="图标文本" leftFontCode="e5c4" @onLeft="back"></HeaderBar>
+    <Cell>
       <icon-text text="文字在右" position="right">asdasd</icon-text>
-    </li>
-    <li>
+    </Cell>
+    <Cell>
       <icon-text text="文字在左" position="left"></icon-text>
-    </li>
-    <li>
+    </Cell>
+    <Cell>
       <icon-text fontFamily="material" :iconSize="size" :iconColor="iconColor" :iconFontCode="fontCode" class="icon-text-page-top"text="文字在上" position="top" ></icon-text>
-    </li>
-    <li>
+    </Cell>
+    <Cell>
       <icon-text text="文字在下" position="bottom" icon-class=""></icon-text>
-    </li>
-  </ul>
+    </Cell>
 
-</div>
+</Page>
 </template>
 
 <script>
-import IconText from 'components/icontext';
+import {IconText,Page,HeaderBar,Cell} from 'components';
 
 export default {
   data(){
@@ -30,12 +28,17 @@ export default {
         iconColor: 'red',
     }
   },
+    methods:{
+        back(){
+            this.$router.back();
+        }
+    },
   components: {
-    IconText,
+    IconText,Page,HeaderBar,Cell
   },
 };
 </script>
-<style lang="less">
+<style rel="stylesheet/less" type="text/less" lang="less">
   .icon-text-page-top{
     span{
       &:first-child{

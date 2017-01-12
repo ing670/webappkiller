@@ -1,34 +1,37 @@
 <template>
-
-  <div class="ee">
-    <router-link to="/cell/abc">Go to Foo</router-link>
-    <router-view></router-view>
-    <cell icon-class="" title="cell 实现各种组合" c="cell--title" value="" :is-link="false"></cell>
-    <!-- 基础样式 -->
-    <cell></cell>
-    <!-- value左对齐 -->
-    <cell icon-class="" title="cell value左对齐控制class就可以了,没有箭头" c="cell--title" value="" :is-link="false"></cell>
-
-
-  </div>
+    <Page>
+        <HeaderBar slot="header" title="行" leftFontCode="e5c4" @onLeft="back"></HeaderBar>
+        <!--<router-link to="/cell/abc">Go to Foo</router-link>-->
+        <!--<router-view></router-view>-->
+        <cell >使用slot</cell>
+        <cell title="title"></cell>
+        <cell title='title' value="value"></cell>
+        <cell title='title'></cell>
+        <cell value='value'></cell>
+    </Page>
 </template>
 <script>
-  import { Cell, } from 'components';
+    import {Cell, Page, HeaderBar} from 'components';
 
-  export default {
-    components: {
-      Cell,
-    },
-  };
+    export default {
+        methods:{
+          back(){
+              this.$router.back();
+          }
+        },
+        components: {
+            Cell, Page, HeaderBar
+        },
+    };
 </script>
 <style lang="less">
-  .cell-group {
-    margin-top: 1rem;
-  }
+    .cell-group {
+        margin-top: 1rem;
+    }
 
-  .ee {
-    overflow-y: scroll;
-    overflow-x: hidden;
+    .ee {
+        overflow-y: scroll;
+        overflow-x: hidden;
 
-  }
+    }
 </style>

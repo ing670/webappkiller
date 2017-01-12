@@ -37,7 +37,7 @@
         height: .72rem;
         line-height: .72rem;
         margin-right: .64rem;
-        color: @body_color;
+        color: #000;
         input[type="checkbox"] {
             display: none;
             &:checked {
@@ -68,7 +68,7 @@
 
     .wk-switch-label {
         font-size: .32rem;
-        color: @color;
+        color: #000;
         margin-left: .16rem;
         margin-right: auto;
     }

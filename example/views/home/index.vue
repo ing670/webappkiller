@@ -92,12 +92,12 @@
                         link: '/infiniteloader',
                         startIconCode: 'e191',
                     },
-                    {
-                        title: 'vuex例子',
-                        value: 'vuex+vue-resource(完成)',
-                        link: '/vuexexample',
-                        startIconCode: 'e191',
-                    },
+//                    {
+//                        title: 'vuex例子',
+//                        value: 'vuex+vue-resource(完成)',
+//                        link: '/vuexexample',
+//                        startIconCode: 'e191',
+//                    },
                     {
                         title: '表单控件',
                         value: '表单控件',
