@@ -30,9 +30,6 @@
             <div class="wk-example-item">
                 <p>日历</p>
                 <DateSelect :value="moment"></DateSelect>
-                <!--<Overlay >-->
-                <!--<Picker :values="sdata"></Picker>-->
-                <!--</Overlay>-->
             </div>
         </div>
     </Page>
@@ -55,7 +52,6 @@
     import {
         Overlay,
         Cell,
-        Picker,
         DateSelect,
         Button,
         DatePicker,
@@ -106,7 +102,6 @@
         components: {
             Cell,
             HeaderBar,
-            Picker,
             DateSelect,
             Button,
             DatePicker,

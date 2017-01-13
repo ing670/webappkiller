@@ -1,5 +1,6 @@
 <template>
     <Page>
+
         <header-bar slot="header" title="webappkiller" right-text="" right-icon=""></header-bar>
         <cell
                 class="wk-cell-padding"

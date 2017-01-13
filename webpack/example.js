@@ -25,7 +25,6 @@ module.exports = {
         filename: '[name].js',
         publicPath: './',
     },
-    devServer: {inline: true},
     resolve: {
         alias: {
             vue: 'vue/dist/vue.min.js',
@@ -101,13 +100,14 @@ module.exports = {
 
 if (process.env.NODE_ENV === 'dev') {
     // 配置开发服务器
-    module.exports.devServer = {
-        historyApiFallback: true,
-        hot: true,
-        progress: false,
-        colors: true,
-        inline: true
-    };
+    // module.exports.devServer = {
+    //     historyApiFallback: true,
+    //     hot: true,
+    //     progress: false,
+    //     colors: true,
+    //     inline: true,
+    // };
+
     module.exports.devtool = '#cheap-module-eval-source-map';
 
     module.exports.plugins = [

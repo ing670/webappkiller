@@ -5,15 +5,13 @@ var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
 var config = require('./webpack/example');
 //var config = require('./webpack/diary');
-config.entry.example.unshift("webpack-dev-server/client?http://localhost:8888/");
+config.entry.example.unshift("webpack-dev-server/client?http://0.0.0.0:8888/");
 var server = new WebpackDevServer(webpack(config), {
-  quiet: false,
+  quiet: true,
   contentBase: __dirname,
   stats: {colors: true},
   publicPath: "/",
-  noInfo: false,
   compress: true,
-
 });
 server.app.get('/api', function (req, res) {
   res.json({
@@ -35,4 +33,8 @@ server.app.get('/api', function (req, res) {
   });
 
 });
-server.listen(8888);
+server.listen(8888,'0.0.0.0',function (err) {
+  if(err)
+     console.log(err)
+
+});
