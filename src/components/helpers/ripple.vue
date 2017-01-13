@@ -11,7 +11,7 @@
      *
      * Version: 1.0.3
      */
-    import classlist from '../utils/classList'
+    import classlist from './classList'
     var startRipple = function startRipple(eventType, event, rippleComponent) {
         var holder = rippleComponent.$el
         if (!classlist.has(holder, 'wk-ripple-ink')) {
@@ -90,8 +90,7 @@
     }
 
     export default {
-        name: 'ripple',
-        el: '.js-ripple',
+       // el: '.js-ripple',
         props: {
             color: {
                 type: String,
@@ -123,6 +122,10 @@
                 }
             }
         },
+        mounted(){
+            console.log(this.$el);
+            this.initialize();
+        }
 
     }
 </script>

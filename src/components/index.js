@@ -14,7 +14,6 @@ import Checkbox from './forms/checkbox.vue'
 import DatePicker from './forms/datePicker.vue'
 import DateSelect from './forms/dateSelect.vue'
 import Ripple from './helpers/ripple.vue'
-import Picker from './picker/picker.vue'
 import ActionSheet from './actionsheet'
 import Modal from './modal/modal.vue'
 import Overlay from './overlay.vue'
@@ -41,7 +40,6 @@ export {
     Overlay,
     Modal,
     ActionSheet,
-    Picker,
     DateSelect,
     DatePicker,
     Checkbox,

@@ -21,7 +21,6 @@
 <script>
 import Icon from '../icon/'
 import Cell from '../cell/'
-import * as domUtil from '../utils/domUtil'
 export default {
 
   props: {
@@ -109,15 +108,7 @@ export default {
       }
     }
   },
-  watch: {
-    focus (value) {
-      if (value) {
-        let stop = domUtil.getOffset(this.$refs.select).top
-        let wh = window.innerHeight
-        this.up = wh - stop < 260
-      }
-    }
-  },
+
   components: {
     Icon,
     Cell,

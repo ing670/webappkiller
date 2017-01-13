@@ -2,13 +2,13 @@
     <Page @click="bclick">
         <HeaderBar slot="header" title="BUTTONS" leftFontCode="e5c4" @onLeft="back"></HeaderBar>
         <div class="wk-page-content-padding">
-            <Button class="vc-button-fill" text="FUKC"  >
+            <my-button class="vc-button-fill" text="FUKC" ref="fufu" >
                 <IconText text="文字在左" position="right" style="color:white" fontCode="e863"></IconText>
-            </Button>
-            <Button @click="bclick" >弹出Toast</Button>
+            </my-button>
+            <my-button @click="bclick" >弹出Toast</my-button>
             <div class="wk-button-wrap">
-            <Button  >左边的按钮</Button>
-            <Button >右边的按钮</Button>
+            <my-button >左边的按钮</my-button>
+            <my-button >右边的按钮</my-button>
             </div>
             <Toast ref="toast" text="Toast"></Toast>
         </div>
@@ -21,7 +21,8 @@
 </style>
 <script>
     //    import {Button,} from '../../src/button'
-    import {Button, IconText, Toast, Page, HeaderBar} from 'components'
+
+    import {Button, IconText, Toast, Page, HeaderBar,Ripple} from 'components'
     export default{
         data(){
             return {
@@ -36,12 +37,16 @@
                 window.history.back();
             }
         },
+        mounted(){
+            console.log(this.$refs.fufu)
+        },
         components: {
             Page,
-            Button,
+            'my-button':Button,
             IconText,
             Toast,
-            HeaderBar
+            HeaderBar,
+            Ripple
         }
     }
 </script>

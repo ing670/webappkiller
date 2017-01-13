@@ -49,12 +49,6 @@
                         startIconCode: 'e85d',
                     },
                     {
-                        title: '选择器',
-                        value: '选择器',
-                        link: '/picker',
-                        startIconCode: 'e191',
-                    },
-                    {
                         title: 'buttons',
                         value: 'button',
                         link: '/buttons',

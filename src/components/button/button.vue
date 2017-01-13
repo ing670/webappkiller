@@ -1,18 +1,19 @@
 <template>
-    <ripple>
-        <a href="javascript:;" @click="$emit('click')" class="js-wk-button wk-button" ref="button">
+    <Ripple>
+        <a href="javascript:;" @click="$emit('click')" class="js-wk-button wk-button">
             <slot>
                 <span class="wk-button-text"  v-if="text">{{text}}</span>
             </slot>
         </a>
-    </ripple>
+    </Ripple>
 </template>
 
 <script>
-    import ripple from '../helpers/ripple.vue'
+    import Ripple from '../helpers/ripple.vue'
     export default {
-        el: '.js-wk-button',
         methods: {},
+        mounted(){
+        },
         props: {
             icon: {
                 type: String,
@@ -49,7 +50,7 @@
         },
 
         components: {
-            ripple
+            Ripple
         }
     }
 </script>

@@ -29,7 +29,6 @@ const router= new VueRouter({
     {path: '/vuexexample', component: () => System.import('../views/vuexexample')},
     {path: '/infiniteloader', component: () => System.import('../views/infiniteloaderexample')},
     {path: '/form', component: () => System.import('../views/form')},
-    {path: '/picker', component: () => System.import('../views/pickers')},
     {path: '/actionSheet', component: () => System.import('../views/actionSheet')},
     {path: '/overlay', component: () => System.import('../views/overlay.vue')},
     {path: '/tabbar', component: () => System.import('../views/tabbar.vue')},
