@@ -37,9 +37,7 @@
                 window.history.back();
             }
         },
-        mounted(){
-            console.log(this.$refs.fufu)
-        },
+
         components: {
             Page,
             'my-button':Button,

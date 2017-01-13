@@ -101,19 +101,9 @@
             }
         },
 
-        beforeDestory () {
-            if (this.$el) {
-                this.$el.removeEventListener('mousedown', handleMouseDown)
-                this.$el.removeEventListener('touchstart', handleTouchStart)
-            }
-        },
+
         methods: {
-            initialize () {
-                if (this.$el) {
-                    this.$el.addEventListener('touchstart', handleTouchStart)
-                    this.$el.addEventListener('mousedown', handleMouseDown)
-                }
-            },
+
             handleTouchStart (e) {
                 if (e.changedTouches) {
                     for (var i = 0; i < e.changedTouches.length; ++i) {
@@ -122,10 +112,6 @@
                 }
             }
         },
-        mounted(){
-            console.log(this.$el);
-            this.initialize();
-        }
 
     }
 </script>
