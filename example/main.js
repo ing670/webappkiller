@@ -9,27 +9,31 @@ import bridge from 'utils/bridge';
 
 
 FastClick.attach(document.body);
-!function (w,cb) {
+!function (w, cb) {
     //i对应的数码像素
     var e = w.document,
         t = e.documentElement,
+        //约定设计稿与实际的比例
         i = 750, d = i / 100, o = "orientationchange" in w ? "orientationchange" : "resize",
         a = function () {
             var n = t.clientWidth || 320;
             n > 750 && (n = 750), t.style.fontSize = n / d + "px";
-            w.loading=t.querySelector('.wk-preloader-wrapper');
-            w.loading.style.display='block';
-            cb();
+            if(!w.loading){
+                w.loading= t.querySelector('.wk-preloader-wrapper');
+                w.loading.style.display = 'block';
+                cb();
+            }
         };
     e.addEventListener && (w.addEventListener(o, a, !1), e.addEventListener("DOMContentLoaded", a, !1))
-}(window,()=>{
+}(window,
+    () => {
     Vue.prototype.$http = axios;
     router.beforeEach((to, from, next) => {
-        window.loading.style.display='block'
+        window.loading.style.display = 'block'
         next();
     })
     router.afterEach((to, from, next) => {
-        window.loading.style.display='none'
+        window.loading.style.display = 'none'
     })
     sync(store, router);
 

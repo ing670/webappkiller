@@ -5,6 +5,8 @@ import HeaderBar from './header';
 import Icon from './icon';
 import {Button} from './button';
 import InfiniteLoader from './infiniteloader';
+import PullToLoadMore from './pulltoloadmore';
+
 import Toast from './toast.vue'
 import Switcher from './forms/switch.vue'
 import Range from './forms/range.vue'
@@ -57,4 +59,5 @@ export {
     Cell,
     IconText,
     HeaderBar,
+    PullToLoadMore,
 };

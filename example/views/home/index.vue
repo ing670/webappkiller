@@ -27,83 +27,57 @@
                 cellList: [
                     {
                         title: 'pop',
-                        value: 'poplayout',
                         link: '/pop',
-                        startIconCode: 'e191',
                     },
                     {
                         title: '遮罩',
-                        value: '遮罩',
                         link: '/overlay',
-                        startIconCode: 'e191',
                     },
                     {
                         title: 'tab',
-                        value: 'tab',
                         link: '/tabbar',
-                        startIconCode: 'e191',
                     },
                     {
                         title: '底部tab',
-                        value: '底部tab',
                         link: '/bottomnav',
-                        startIconCode: 'e85d',
                     },
                     {
                         title: 'buttons',
-                        value: 'button',
                         link: '/buttons',
-                        startIconCode: 'e191',
                     },
 
                     {
                         title: 'Icons',
-                        value: '图标',
                         link: '/icon',
-                        startIconCode: 'e39f',
                     },
 
                     {
                         title: 'Grid',
-                        value: '9宫格',
                         link: '/grid',
-                        startIconCode: 'e3a1',
                     },
                     {
                         title: 'HeaderBar',
-                        value: '顶部导航',
                         link: '/headerbar',
-                        startIconCode: 'e236',
                     },
                     {
                         title: 'IconText',
-                        value: '图标文字',
                         link: '/icontext',
-                        startIconCode: 'e191',
                     },
                     {
                         title: '无限滚动',
-                        value: '滚啊滚啊滚',
                         link: '/infiniteloader',
-                        startIconCode: 'e191',
                     },
-//                    {
-//                        title: 'vuex例子',
-//                        value: 'vuex+vue-resource(完成)',
-//                        link: '/vuexexample',
-//                        startIconCode: 'e191',
-//                    },
+                    {
+                        title: '上拉下拉',
+                        link: '/pulltoloadmore',
+                    },
                     {
                         title: '表单控件',
-                        value: '表单控件',
                         link: '/form',
-                        startIconCode: 'e191',
                     },
                     {
                         title: 'Cell',
-                        value: '单行列表单行',
                         link: '/cell',
-                        startIconCode: 'e153',
                     },
                 ],
             };
