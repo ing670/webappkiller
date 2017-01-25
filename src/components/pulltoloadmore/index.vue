@@ -1,37 +1,23 @@
 <template>
     <div ref="pulltoloadmorewraper" class="wk-pulltoloadmore">
-        <slot name="pulldown">
-
-            <div ref="pulldown" class="wk-pulldown">
+        <div ref="pulldown" class="wk-pulldown">
+            <slot name="pulldown">
                 <icon v-show="!pullDownLoading" class="pulldown_arrow" ref="pulldown_arrow" fontCode="e5db"></icon>
                 <circular v-show="pullDownLoading" :size="24" color="carbon"></circular>
                 <span class="wk-pulldown-scroll-text">正在加载。。。</span>
-            </div>
-        </slot>
-        <slot>
-            <div ref="pullcontent" class="wk-pull-content">
-                <div ref="pullcontentchild" style="height: 300px">
-                    内容
-                </div>
-                <div ref="pullcontentchild" style="height: 300px">
-                    内容
-                </div>
-                <div ref="pullcontentchild" style="height: 300px">
-                    内容
-                </div>
-                <div ref="pullcontentchild" style="height: 300px">
-                    内容
-                </div>
-            </div>
-        </slot>
-
-        <slot name="pullup">
-            <div ref="pullup" class="wk-pullup" >
+            </slot>
+        </div>
+        <div ref="pullcontent" class="wk-pull-content">
+            <slot>
+            </slot>
+        </div>
+        <div ref="pullup" class="wk-pullup">
+            <slot name="pullup">
                 <icon v-show="!pullUpLoading" class="pullup_arrow" ref="pullup_arrow" fontCode="e5d8"></icon>
                 <circular v-show="pullUpLoading" :size="24" color="carbon"></circular>
                 <span class="wk-pulldown-scroll-text">正在加载。。。</span>
-            </div>
-        </slot>
+            </slot>
+        </div>
 
     </div>
 </template>
@@ -46,14 +32,30 @@
                 pullUpLoading: false,
                 pullDownLoading: false,
                 startY: 0,
-                endY: 0,
                 pulldownHeight: 0,
                 pullupHeight: 0,
                 contentOffsetTop: 0,
-                contentOffsetBottom:0
+                contentOffsetBottom: 0
             }
         },
-        methods: {},
+        props: {
+            pullDownCallBack: {
+                type: Function,
+                default: null
+            },
+            pullUpCallBack: {
+                type: Function,
+                default: null
+            },
+            pullUp: {
+                type: Boolean,
+                default: false
+            },
+            pullDown: {
+                type: Boolean,
+                default: false
+            }
+        },
         mounted(){
 
             this.pulldownHeight = this.$refs.pulldown.clientHeight;
@@ -61,16 +63,18 @@
             this.$refs.pulldown.style.top = (0 - this.pulldownHeight) + 'px';
             this.$refs.pullup.style.bottom = (0 - this.pullupHeight) + 'px';
             this.$refs.pullcontent.addEventListener('touchstart', (e) => {
-                let isBottom=this.$refs.pullcontent.scrollHeight-this.$refs.pullcontent.scrollTop==this.$refs.pullcontent.clientHeight?true:false;
+                let isBottom = this.$refs.pullcontent.scrollHeight - this.$refs.pullcontent.scrollTop == this.$refs.pullcontent.clientHeight ? true : false;
+                let isTop = this.$refs.pullcontent.scrollTop == 0;
 
-                if ((this.pullDownLoading == false && this.$refs.pullcontent.scrollTop == 0) || isBottom) {
+                if ((this.pullDown && this.pullDownLoading == false && isTop) || (this.pullUp && this.pullUpLoading == false && isBottom)) {
                     this.startY = e.touches[0].clientY;
                 }
             }, false);
             this.$refs.pullcontent.addEventListener('touchmove', (e) => {
                 let distance = (e.touches[0].clientY - this.startY);
+                let isTop = this.$refs.pullcontent.scrollTop == 0;
                 //下拉效果
-                if (this.pullDownLoading == false && this.$refs.pullcontent.scrollTop == 0 && distance > 0) {
+                if (this.pullDown && this.pullDownLoading == false && isTop && distance > 0) {
                     e.preventDefault();
                     e.stopPropagation();
                     this.contentOffsetTop = distance / 2;
@@ -87,9 +91,9 @@
                     }
                 }
                 //上拉效果
-                let isBottom=this.$refs.pullcontent.scrollHeight-this.$refs.pullcontent.scrollTop==this.$refs.pullcontent.clientHeight?true:false;
+                let isBottom = this.$refs.pullcontent.scrollHeight - this.$refs.pullcontent.scrollTop == this.$refs.pullcontent.clientHeight ? true : false;
 
-                if (this.pullUpLoading == false && isBottom && distance < 0) {
+                if (this.pullUp && this.pullUpLoading == false && isBottom && distance < 0) {
                     e.preventDefault();
                     e.stopPropagation();
                     this.contentOffsetBottom = distance / 2;
@@ -109,15 +113,15 @@
             }, false);
             this.$refs.pullcontent.addEventListener('touchend', (e) => {
                 //下拉刷新
-                if (this.pullDownLoading == false && this.$refs.pullcontent.scrollTop == 0) {
+                if (this.pullDown && this.pullDownLoading == false && this.$refs.pullcontent.scrollTop == 0) {
 
                     if (this.contentOffsetTop > this.pulldownHeight) {
+
                         this.$refs.pullcontent.style.transform = 'translate3d(0,' + this.pulldownHeight + 'px,0)';
                         this.$refs.pulldown.style.transform = 'translate3d(0,' + this.pulldownHeight + 'px,0)';
                         this.$refs.pulldown_arrow.$el.style.transform = 'rotate(180deg)'
-
                         this.pullDownLoading = true;
-                        setTimeout(() => {
+                        let next = () => {
                             this.startY = 0;
                             this.contentOffsetTop = 0;
                             this.$refs.pullcontent.style.transform = 'translate3d(0,0px,0)';
@@ -126,24 +130,24 @@
                                 this.pullDownLoading = false;
                                 this.$refs.pulldown_arrow.$el.style.transform = 'rotate(0deg)'
                             }, 200);
-                        }, 2000);
-                    } else {
-                        this.$refs.pullcontent.style.transform = 'translate3d(0,0,0)';
-                        this.$refs.pulldown.style.transform = 'translate3d(0,0,0)';
-                        this.$refs.pulldown_arrow.$el.style.transform = 'rotate(0deg)'
+                        };
+                        if (this.pullDownCallBack) {
+                            this.pullDownCallBack(next)
+                        } else {
+                            setTimeout(next, 2000);
+                        }
                     }
                 }
-                let isBottom=this.$refs.pullcontent.scrollHeight-this.$refs.pullcontent.scrollTop==this.$refs.pullcontent.clientHeight?true:false;
+                let isBottom = this.$refs.pullcontent.scrollHeight - this.$refs.pullcontent.scrollTop == this.$refs.pullcontent.clientHeight ? true : false;
+                if (this.pullUp && this.pullUpLoading == false && isBottom) {
 
-                if (this.pullUpLoading == false && isBottom) {
-
-                    if ((0-this.contentOffsetBottom) > this.pullupHeight) {
+                    if ((0 - this.contentOffsetBottom) > this.pullupHeight) {
                         this.$refs.pullcontent.style.transform = 'translate3d(0,' + -this.pullupHeight + 'px,0)';
                         this.$refs.pullup.style.transform = 'translate3d(0,' + -this.pullupHeight + 'px,0)';
                         this.$refs.pullup_arrow.$el.style.transform = 'rotate(180deg)'
 
                         this.pullUpLoading = true;
-                        setTimeout(() => {
+                        let next = () => {
                             this.startY = 0;
                             this.contentOffsetBottom = 0;
                             this.$refs.pullcontent.style.transform = 'translate3d(0,0px,0)';
@@ -152,11 +156,13 @@
                                 this.pullUpLoading = false;
                                 this.$refs.pullup_arrow.$el.style.transform = 'rotate(0deg)'
                             }, 200);
-                        }, 2000);
-                    } else {
-                        this.$refs.pullcontent.style.transform = 'translate3d(0,0,0)';
-                        this.$refs.pullup.style.transform = 'translate3d(0,0,0)';
-                        this.$refs.pullup_arrow.$el.style.transform = 'rotate(0deg)'
+                        };
+                        if (this.pullUp && this.pullUpCallBack) {
+                            this.pullUpCallBack(next)
+                        } else {
+                            setTimeout(next, 2000);
+                        }
+
                     }
                 }
 
@@ -181,13 +187,13 @@
             font-size: .64rem
 
         }
-        .pulldown_arrow ,.pullup_arrow{
+        .pulldown_arrow, .pullup_arrow {
             transition: all .3s ease;
             font-size: .36rem;
             line-height: .64rem;
 
         }
-        .wk-pulldown,.wk-pullup {
+        .wk-pulldown, .wk-pullup {
             position: absolute;
             width: 100%;
             font-size: .64rem;
