@@ -24,7 +24,7 @@
                     next();
                 },2000)
             },
-            clickFunc(){
+            clickFunc(e){
                 window.alert('fff')
             }
 

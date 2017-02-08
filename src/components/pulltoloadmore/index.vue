@@ -31,6 +31,8 @@
             return {
                 pullUpLoading: false,
                 pullDownLoading: false,
+                pullUping:false,
+                pullDowning:false,
                 startY: 0,
                 pulldownHeight: 0,
                 pullupHeight: 0,
@@ -63,23 +65,23 @@
             this.$refs.pulldown.style.top = (0 - this.pulldownHeight) + 'px';
             this.$refs.pullup.style.bottom = (0 - this.pullupHeight) + 'px';
             this.$refs.pullcontent.addEventListener('touchstart', (e) => {
-                let isBottom = this.$refs.pullcontent.scrollHeight - this.$refs.pullcontent.scrollTop == this.$refs.pullcontent.clientHeight ? true : false;
-                let isTop = this.$refs.pullcontent.scrollTop == 0;
-
-                if ((this.pullDown && this.pullDownLoading == false && isTop) || (this.pullUp && this.pullUpLoading == false && isBottom)) {
                     this.startY = e.touches[0].clientY;
-                }
+//                    this.$refs.pullcontentmask.style.display="block"
             }, false);
             this.$refs.pullcontent.addEventListener('touchmove', (e) => {
+
                 let distance = (e.touches[0].clientY - this.startY);
                 let isTop = this.$refs.pullcontent.scrollTop == 0;
                 //下拉效果
                 if (this.pullDown && this.pullDownLoading == false && isTop && distance > 0) {
                     e.preventDefault();
                     e.stopPropagation();
+                    this.pullUping=false;
+                    this.pullDowning=true;
                     this.contentOffsetTop = distance / 2;
                     this.$refs.pulldown.style.transform = 'translate3d(0,' + distance / 3 + 'px,0)';
                     this.$refs.pullcontent.style.transform = 'translate3d(0,' + distance / 2 + 'px,0)';
+                    //角度控制
                     if (distance / 2 <= 180) {
                         this.$refs.pulldown_arrow.$el.style.transform = 'rotate(' + (distance / 2 ) + 'deg)'
                     }
@@ -91,11 +93,13 @@
                     }
                 }
                 //上拉效果
-                let isBottom = this.$refs.pullcontent.scrollHeight - this.$refs.pullcontent.scrollTop == this.$refs.pullcontent.clientHeight ? true : false;
+                let isBottom = this.$refs.pullcontent.scrollHeight - this.$refs.pullcontent.scrollTop == this.$refs.pullcontent.clientHeight ;
 
                 if (this.pullUp && this.pullUpLoading == false && isBottom && distance < 0) {
                     e.preventDefault();
                     e.stopPropagation();
+                    this.pullUping=true;
+                    this.pullDowning=false;
                     this.contentOffsetBottom = distance / 2;
                     this.$refs.pullup.style.transform = 'translate3d(0,' + distance / 3 + 'px,0)';
                     this.$refs.pullcontent.style.transform = 'translate3d(0,' + distance / 2 + 'px,0)';
@@ -113,8 +117,15 @@
             }, false);
             this.$refs.pullcontent.addEventListener('touchend', (e) => {
                 //下拉刷新
-                if (this.pullDown && this.pullDownLoading == false && this.$refs.pullcontent.scrollTop == 0) {
+               // this.$refs.pullcontentmask.style.display="block"
+                e.stopPropagation();
+                let isBottom = this.$refs.pullcontent.scrollHeight - this.$refs.pullcontent.scrollTop == this.$refs.pullcontent.clientHeight;
+                let isTop = this.$refs.pullcontent.scrollTop == 0;
+                let isPullDown=this.pullDown && this.pullDownLoading == false && isTop&&this.pullDowning;
+                let isPullUp=this.pullUp && this.pullUpLoading == false && isBottom&&this.pullUping
 
+                if (isPullDown) {
+                    console.log('isPullDown');
                     if (this.contentOffsetTop > this.pulldownHeight) {
 
                         this.$refs.pullcontent.style.transform = 'translate3d(0,' + this.pulldownHeight + 'px,0)';
@@ -129,6 +140,7 @@
                             setTimeout(() => {
                                 this.pullDownLoading = false;
                                 this.$refs.pulldown_arrow.$el.style.transform = 'rotate(0deg)'
+//                                this.$refs.pullcontentmask.style.display="none"
                             }, 200);
                         };
                         if (this.pullDownCallBack) {
@@ -136,16 +148,22 @@
                         } else {
                             setTimeout(next, 2000);
                         }
+                    }else {
+                        this.$refs.pullcontent.style.transform = 'translate3d(0,0,0)';
+                        this.$refs.pulldown.style.transform = 'translate3d(0,0,0)';
+                        this.$refs.pulldown_arrow.$el.style.transform = 'rotate(0deg)'
+                        this.pullDownLoading = false;
+//                        this.$refs.pullcontentmask.style.display="none"
+
                     }
                 }
-                let isBottom = this.$refs.pullcontent.scrollHeight - this.$refs.pullcontent.scrollTop == this.$refs.pullcontent.clientHeight ? true : false;
-                if (this.pullUp && this.pullUpLoading == false && isBottom) {
+                if (isPullUp) {
+                    console.log('isPullUp');
 
                     if ((0 - this.contentOffsetBottom) > this.pullupHeight) {
                         this.$refs.pullcontent.style.transform = 'translate3d(0,' + -this.pullupHeight + 'px,0)';
                         this.$refs.pullup.style.transform = 'translate3d(0,' + -this.pullupHeight + 'px,0)';
                         this.$refs.pullup_arrow.$el.style.transform = 'rotate(180deg)'
-
                         this.pullUpLoading = true;
                         let next = () => {
                             this.startY = 0;
@@ -155,6 +173,8 @@
                             setTimeout(() => {
                                 this.pullUpLoading = false;
                                 this.$refs.pullup_arrow.$el.style.transform = 'rotate(0deg)'
+//                                this.$refs.pullcontentmask.style.display="none"
+
                             }, 200);
                         };
                         if (this.pullUp && this.pullUpCallBack) {
@@ -162,6 +182,13 @@
                         } else {
                             setTimeout(next, 2000);
                         }
+
+                    }else {
+                        this.$refs.pullcontent.style.transform = 'translate3d(0,0px,0)';
+                        this.$refs.pullup.style.transform = 'translate3d(0,0,0)';
+                        this.$refs.pullup_arrow.$el.style.transform = 'rotate(0deg)'
+                        this.pullUpLoading = false;
+//                        this.$refs.pullcontentmask.style.display="none"
 
                     }
                 }
@@ -215,7 +242,16 @@
         transition: all .2s ease;
         flex: 1;
         overflow-y: scroll;
+        position: relative;
 
+    }
+    .wk-pull-content-mask{
+        position: absolute;
+        top:0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #4caf50;
     }
 
 </style>
