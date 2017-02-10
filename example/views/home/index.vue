@@ -26,6 +26,10 @@
             return {
                 cellList: [
                     {
+                        title: 'picker',
+                        link: '/picker',
+                    },
+                    {
                         title: 'pop',
                         link: '/pop',
                     },
