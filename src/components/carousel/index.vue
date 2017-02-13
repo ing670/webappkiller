@@ -1,14 +1,16 @@
 <template>
-    <div class="wk-carousel-main js-qlc-cell" ref="main">
+    <div class="wk-carousel-main js-qlc-cell" ref="main" :style="{width:mainWidth+'px',height:mainHeight+'px'}">
         <div id="wk-carousel" class="wk-transition" ref="carousel">
-            <div  v-for="it in value">
-                <img :src="it.src"/>
+            <div  v-for="it in value" :style="{width:mainWidth+'px',height:mainHeight+'px'}">
+                <img :src="it.src" @load="setImgStyle"/>
             </div>
         </div>
         <div class="wk-carousel-points" ref="points">
             <div v-for="it in value">
             </div>
         </div>
+        <div id="wk-carousel-left-shadow" ref="leftShadow"></div>
+        <div id="wk-carousel-right-shadow" ref="rightShadow"></div>
     </div>
 </template>
 <script>
@@ -26,9 +28,19 @@
             },
             mainWidth:{
                 default: 220,
+            },
+            mainHeight:{
+                default: 220,
             }
         },
         methods:{
+            setImgStyle(e){
+                if(e.currentTarget.clientHeight>e.currentTarget.clientWidth){
+                    e.currentTarget.style.width = "100%";
+                }else{
+                    e.currentTarget.style.height = "100%";
+                }
+            },
             addActive(index){
                 let pointsNum = this.$refs.points.children.length;
                 for(let i = 0;i < pointsNum;i++){
@@ -64,7 +76,7 @@
             this.addActive(this.currentIndex);
             this.auto_play();
 //            console.log(this.value);
-//            console.log(this.$refs);
+            console.log(this.$refs);
 //            setInterval(()=>{
 //                if(!this.isTouch){
 //                    this.distance -= this.mainWidth; //这里的220需要灵活配置
@@ -82,15 +94,34 @@
                 clearInterval(this.timer);
                 this.startX = e.touches[0].clientX;
                 this.$refs.carousel.classList.remove('wk-transition');
+                this.$refs.leftShadow.classList.remove('wk-transition');
+                this.$refs.rightShadow.classList.remove('wk-transition');
             }, false);
 
             this.$refs.carousel.addEventListener('touchmove', (e)=> {
                 this.isTouch = true;
                 moveX = (e.touches[0].clientX - this.startX)+this.distance;
                 if(moveX>=0){
+                    //到达最左
+                    if(parseInt(moveX)>halfWidth){
+
+                    }else{
+                        let grade = parseInt(moveX) / halfWidth;   //拉伸率,最大边界为宽的一半
+                        this.$refs.leftShadow.style.width = 20*grade + "px";
+                        this.$refs.leftShadow.style.opacity = 0.5*grade;
+                    }
                     moveX = 0;
                 }
                 else if(moveX*(-1)+this.mainWidth >= this.maxWidth){
+                    //到达最右
+                    let over = moveX*(-1)+this.mainWidth - this.maxWidth;
+                    if(over>halfWidth){
+
+                    }else{
+                        let grade = over / halfWidth;   //拉伸率,最大边界为宽的一半
+                        this.$refs.rightShadow.style.width = 20*grade + "px";
+                        this.$refs.rightShadow.style.opacity = 0.5*grade;
+                    }
                     moveX = (this.maxWidth-this.mainWidth)*(-1);
                 }
                 this.$refs.carousel.style.webkitTransform = 'translate3d(' + moveX + 'px,0,0)';
@@ -116,11 +147,18 @@
                 this.addActive(this.currentIndex);
                 this.auto_play();
                 this.isTouch = false;
+                this.$refs.leftShadow.setAttribute('class','wk-transition');
+                this.$refs.rightShadow.setAttribute('class','wk-transition');
+                this.$refs.leftShadow.style.width = "0px";
+                this.$refs.rightShadow.style.width = "0px";
                 //this.distance += e.touches[0].clientX - this.startX;
                // this.$refs.carousel.style.webkitTransform = 'translate3d(' + this.distance + 'px,0,0)';
                 //this.startX=0;
             }, false);
 
+        },
+        destroyed(){
+            clearInterval(this.timer);
         }
     };
 </script>
@@ -130,12 +168,20 @@
     position: relative;
     margin: 0 auto;
     overflow: hidden;
-    width: 220px;
-    height: 220px;
 }
 #wk-carousel{
     display: flex;
     position: relative;
+}
+#wk-carousel div{
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+#wk-carousel div img{
+    display: block;
 }
 .wk-transition{
     transition: all 0.3s;
@@ -159,5 +205,24 @@
 .point-active{
     opacity: 0.8 !important;
 }
-
+#wk-carousel-left-shadow{
+    height: 100%;
+    width: 0px;
+    position: absolute;
+    left: 0;
+    background-color: black;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    opacity: 0.7;
+}
+#wk-carousel-right-shadow{
+    height: 100%;
+    width: 0px;
+    position: absolute;
+    right: 0;
+    background-color: black;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    opacity: 0.7;
+}
 </style>

@@ -12,6 +12,8 @@
     import Image1 from '../../static/img/111.jpg';
     import Image2 from '../../static/img/222.jpg';
     import Image3 from '../../static/img/333.jpg';
+    import Image4 from '../../static/img/keji_height.jpg';
+    import Image5 from '../../static/img/keji_width.jpg';
 
 
     export default {
@@ -20,7 +22,9 @@
                 itemdata: [
                     {src: Image1, title: '1'},
                     {src: Image2, title: '2'},
-                    {src: Image3, title: '3'}
+                    {src: Image3, title: '3'},
+                    {src: Image4, title: '4'},
+                    {src: Image5, title: '5'}
                 ]
 
             }
