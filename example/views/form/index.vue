@@ -70,8 +70,8 @@
                 moment: moment().format('YYYY-MM-DD'),
                 rdata: [
                     {label: "label1", value: 1, checked: true},
-                    {label: "label1", value: 1, checked: false},
-                    {label: "label1", value: 1, checked: false},
+                    {label: "label2", value: 1, checked: false},
+                    {label: "label3", value: 1, checked: false},
                 ],
                 sdata: [
                     {text: '111111111111', value: '1111111111'},

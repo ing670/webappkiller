@@ -79,6 +79,10 @@
                         title: 'Cell',
                         link: '/cell',
                     },
+                    {
+                        title: '轮播图',
+                        link: '/carousel',
+                    },
                 ],
             };
         },

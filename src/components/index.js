@@ -1,5 +1,6 @@
 import Grid from './grid';
 import Cell from './cell';
+import Carousel from './carousel';
 import IconText from './icontext';
 import HeaderBar from './header';
 import Icon from './icon';
@@ -57,6 +58,7 @@ export {
     Icon,
     Grid,
     Cell,
+    Carousel,
     IconText,
     HeaderBar,
     PullToLoadMore,

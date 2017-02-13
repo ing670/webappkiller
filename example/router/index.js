@@ -15,6 +15,7 @@ const router = new VueRouter({
         {path: '/icon', component: () => System.import('../views/vuexicon')},
         {path: '/list', component: () => System.import('../views/list')},
         {path: '/', component: () => System.import('../views/home')},
+        {path: '/carousel', component: () => System.import('../views/carousel')},
         {
             path: '/cell', component: () => System.import('../views/cell'), children: [
             {
