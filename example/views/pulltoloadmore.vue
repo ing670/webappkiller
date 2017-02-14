@@ -1,7 +1,7 @@
 <template>
     <Page>
         <HeaderBar slot="header" title="行" leftFontCode="e5c4" @onLeft="back"></HeaderBar>
-        <PullToLoadMore pullDown="true" pullUp="true" :pullDownCallBack="pullDownCallBack" :pullUpCallBack="pullDownCallBack">
+        <PullToLoadMore :pullDown="true" :pullUp="false" :pullDownCallBack="pullDownCallBack" :pullUpCallBack="pullDownCallBack">
             <div @click="clickFunc" v-for="i in list">{{i}}</div>
         </PullToLoadMore>
     </Page>
