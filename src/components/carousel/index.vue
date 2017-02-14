@@ -23,18 +23,29 @@
             value: {
                 default: [],
             },
-            rippleColor:{
-                default: 'black',
-            },
             mainWidth:{
-                default: 220,
+                default: 375,
             },
             mainHeight:{
                 default: 220,
+            },
+            auto_play:{
+                type: Boolean,
+                default: true
+            },
+            auto_time:{
+                default: 2000
+            },
+            w:{
+
+            },
+            h:{
+
             }
         },
         methods:{
             setImgStyle(e){
+                //设置图片缩放,当图片大于可视范围时,比较该图片的长和宽,较小的为基准作为缩放
                 if(e.currentTarget.clientHeight>e.currentTarget.clientWidth){
                     e.currentTarget.style.width = "100%";
                 }else{
@@ -42,13 +53,15 @@
                 }
             },
             addActive(index){
+                //设置当前焦点
                 let pointsNum = this.$refs.points.children.length;
                 for(let i = 0;i < pointsNum;i++){
                     this.$refs.points.children[i].setAttribute('class','');
                 }
                 this.$refs.points.children[index-1].setAttribute('class','point-active');
             },
-            auto_play(){
+            autoPlay(){
+                //自动播放
                 this.timer = setInterval(()=>{
                     if(!this.isTouch){
                         this.distance -= this.mainWidth; //这里的220需要灵活配置
@@ -60,35 +73,39 @@
                         this.currentIndex = parseInt((this.distance*(-1)+this.mainWidth)/this.mainWidth);
                         this.addActive(this.currentIndex);
                     }
-                },2000);
+                },this.auto_time);
+            }
+        },
+        created(){
+            if(this.w){
+                this.mainWidth = this.w;
+            }
+            else{
+                //默认设置为父容器的宽度
+            }
+            if(this.h){
+                this.mainHeight = this.h;
             }
         },
         mounted(){
-//            console.log(this.mainWidth);
-            this.startX = 0;
-            this.distance = 0;    //用来记录上一次偏移量
+            if(!this.w){
+                //默认设置为父容器的宽度
+                this.mainWidth = this.$el.parentElement.clientWidth;
+            }
             let halfWidth = this.mainWidth/2; //一张图片的一半宽度,用来界定是否划到下一张图
             let moveX=0;
-            this.isTouch = false;    //是否正处于触摸状态
             let num = this.value.length; //图片个数
+            this.startX = 0;
+            this.distance = 0;    //用来记录上一次偏移量
+            this.isTouch = false;    //是否正处于触摸状态
             this.maxWidth =  num * this.mainWidth; //暂时220一张图
             this.currentIndex = 1; //当前显示第几张图
+
             this.addActive(this.currentIndex);
-            this.auto_play();
-//            console.log(this.value);
-            console.log(this.$refs);
-//            setInterval(()=>{
-//                if(!this.isTouch){
-//                    this.distance -= this.mainWidth; //这里的220需要灵活配置
-//
-//                    if(this.distance <= maxWidth*(-1)){
-//                        this.distance = 0;
-//                    }
-//                    this.$refs.carousel.style.webkitTransform = 'translate3d(' + this.distance + 'px,0,0)';
-//                    index = parseInt((this.distance*(-1)+this.mainWidth)/this.mainWidth);
-//                    this.addActive(index);
-//                }
-//            },2000);
+
+            if(this.auto_play){
+                this.autoPlay();
+            }
             this.$refs.carousel.addEventListener('touchstart', (e)=>{
                 this.isTouch = true;
                 clearInterval(this.timer);
@@ -139,26 +156,26 @@
                     }
                 }
                 let afterOffset = this.mainWidth * index * (-1);
-//                console.log(index);
-//                console.log(afterOffset);
                 this.$refs.carousel.style.webkitTransform = 'translate3d(' + afterOffset + 'px,0,0)';
                 this.distance = afterOffset;
                 this.currentIndex = parseInt((this.distance*(-1)+this.mainWidth)/this.mainWidth);
                 this.addActive(this.currentIndex);
-                this.auto_play();
+                if(this.auto_play){
+                    this.autoPlay();
+                }
                 this.isTouch = false;
                 this.$refs.leftShadow.setAttribute('class','wk-transition');
                 this.$refs.rightShadow.setAttribute('class','wk-transition');
                 this.$refs.leftShadow.style.width = "0px";
                 this.$refs.rightShadow.style.width = "0px";
-                //this.distance += e.touches[0].clientX - this.startX;
-               // this.$refs.carousel.style.webkitTransform = 'translate3d(' + this.distance + 'px,0,0)';
-                //this.startX=0;
             }, false);
 
         },
         destroyed(){
-            clearInterval(this.timer);
+            if(this.auto_play){
+                clearInterval(this.timer);
+            }
+
         }
     };
 </script>

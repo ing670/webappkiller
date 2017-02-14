@@ -100,7 +100,6 @@
                 }
                 //上拉效果
                 let isBottom = this.$refs.pullcontent.scrollHeight - this.$refs.pullcontent.scrollTop == this.$refs.pullcontent.clientHeight;
-
                 if (this.pullUp && this.pullUpLoading == false && isBottom && distance < 0) {
                     e.preventDefault();
                     e.stopPropagation();
@@ -125,7 +124,6 @@
                 //下拉刷新
                 // this.$refs.pullcontentmask.style.display="block"
                 e.stopPropagation();
-                console.log(this.$refs.pullcontent.classList)
                 this.$refs.pullcontent.classList.add('wk-animated-time');
                 this.$refs.pulldown.classList.add('wk-animated-time');
                 this.$refs.pullup.classList.add('wk-animated-time');
