@@ -147,10 +147,10 @@
     bottom: 10px;
 }
 .wk-carousel-points div{
-    width: 10px;
-    height: 10px;
-    margin-left: 5px;
-    margin-right: 5px;
+    width: .1rem;
+    height: .1rem;
+    margin-left: .05rem;
+    margin-right: .05rem;
     display: inline-block;
     opacity: 0.3;
     border-radius: 100%;

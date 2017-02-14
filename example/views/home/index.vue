@@ -26,6 +26,10 @@
             return {
                 cellList: [
                     {
+                        title: '通讯录',
+                        link: '/indexlist',
+                    },
+                    {
                         title: 'picker',
                         link: '/picker',
                     },

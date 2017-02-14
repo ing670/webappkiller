@@ -9,6 +9,8 @@ Vue.use(VueRouter);
 const router = new VueRouter({
     mode: 'hash',
     routes: [
+        {path: '/indexlist', component: () => System.import("../views/indexList")},
+
         {path: '/picker', component: () => System.import("../views/picker")},
 
         {path: '/buttons', component: () => System.import("../views/buttons")},
