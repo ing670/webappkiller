@@ -1,15 +1,22 @@
 <template>
-    <IndexList :listData="listData" :itemClick="itemClick">
+    <Page>
+        <HeaderBar slot="header" title="通讯录" leftFontCode="e5c4" @onLeft="back"></HeaderBar>
+
+        <IndexList :listData="listData" :itemClick="itemClick">
     </IndexList>
+    </Page>
 </template>
 <style rel='stylesheet/less' lang="less">
 
 </style>
 <script>
-    import  {IndexList} from 'components'
+    import  {IndexList,Page,HeaderBar} from 'components'
 
     export default{
         methods: {
+            back () {
+                window.history.back()
+            },
             itemClick(data){
                 alert(JSON.stringify(data))
             }
@@ -52,7 +59,7 @@
         mounted(){
         },
         components: {
-            IndexList
+            IndexList,Page,HeaderBar
         }
     }
 
