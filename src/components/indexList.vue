@@ -5,8 +5,8 @@
                 <div class="wk-index-data-title">
                     {{i}}
                 </div>
-                <div v-for="it in listData[i]" class="wk-index-data-content" >
-                {{it}}
+                <div v-for="it in listData[i]" class="wk-index-data-content" @click="itemClick(it)">
+                    {{it}}
                 </div>
             </div>
 
@@ -31,7 +31,7 @@
         .wk-index-data-list-wrap {
             flex: 1;
             border-right: 1px solid #ddd;
-            overflow-y: scroll;;
+            overflow-y: scroll;
             .wk-index-data-title {
                 padding: 0 .20rem;
                 height: .72rem;
@@ -58,7 +58,7 @@
             font-size: .28rem;
 
         }
-        .wk-index-list-position{
+        .wk-index-list-position {
             position: absolute;
             align-self: center;
             width: 1rem;
@@ -75,91 +75,92 @@
     export default{
         data(){
             return {
-                showPosition:false,
-                currentPosition:1
+                showPosition: false,
+                currentPosition: 1
             }
         },
         methods: {
             scrollToTarget(){
-                let scroll=0;
-                if(this.listData[this.indexs[this.currentPosition-1]].length>0&&this.currentPosition-1<=this.$refs.wk_index_list_left_wrap.children.length){
-                    for(let i =0 ; i<this.currentPosition-1;i++){
-                        scroll+=this.$refs.wk_index_list_left_wrap.children[i].clientHeight
+                let scroll = 0;
+                if (this.listData[this.indexs[this.currentPosition - 1]].length > 0 && this.currentPosition - 1 <= this.$refs.wk_index_list_left_wrap.children.length) {
+                    for (let i = 0; i < this.currentPosition - 1; i++) {
+                        scroll += this.$refs.wk_index_list_left_wrap.children[i].clientHeight
                     }
-                    this.$refs.wk_index_list_left_wrap.scrollTop=scroll;
+                    this.$refs.wk_index_list_left_wrap.scrollTop = scroll;
                 }
 
             }
         },
 
         props: {
-            listData:{
+            itemClick: {
+                type: Function,
+                default: function () {
+                }
+            },
+            listData: {
                 type: Object,
-                default:{
-                    A:['a','A','AA','AAA'],
-                    B:["B"],
-                    C:['Ca','CA','CAA','CAAA'],
-                    D:['Da','DA','DAA','DAAA'],
-                    E:['Ea','EA','EAA','EAAA'],
-                    F:['Fa','FA','FAA','FAAA'],
-                    G:['Ga','GA','GAA','GAAA'],
-                    H:['Ha','HA','HAA','HAAA'],
-                    I:['Ia','IA','IAA','IAAA'],
-                    J:['Ja','JA','JAA','JAAA'],
-                    K:['Ka','KA','KAA','KAAA'],
-                    L:['La','LA','LAA','LAAA'],
-                    M:['Ma','MA','MAA','MAAA'],
-                    N:['Na','NA','NAA','NAAA'],
-                    O:['Oa','OA','OAA','OAAA'],
-                    P:['Pa','PA','PAA','PAAA'],
-                    Q:['Qa','QA','QAA','QAAA'],
-                    R:['Ra','RA','RAA','RAAA'],
-                    S:['Sa','SA','SAA','SAAA'],
-                    T:['Ta','TA','TAA','TAAA'],
-                    U:['Ua','UA','UAA','UAAA'],
-                    V:[],
-                    W:['Wa','WA','WAA','WAAA'],
-                    X:['Xa','XA','XAA','XAAA'],
-                    Y:['Ya','YA','YAA','YAAA'],
-                    Z:['Za','ZA','ZAA','ZAAA'],
-                    "#":["1"]
+                default: {
+                    A: [],
+                    B: [],
+                    C: [],
+                    D: [],
+                    E: [],
+                    F: [],
+                    G: [],
+                    H: [],
+                    I: [],
+                    J: [],
+                    K: [],
+                    L: [],
+                    M: [],
+                    N: [],
+                    O: [],
+                    P: [],
+                    Q: [],
+                    R: [],
+                    S: [],
+                    T: [],
+                    U: [],
+                    V: [],
+                    W: [],
+                    X: [],
+                    Y: [],
+                    Z: [],
+                    "#": []
                 }
             },
             indexs: {
                 type: Array,
-                default: ['A', 'B', "C", 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'S', 'Y', 'Z','#']
+                default: ['A', 'B', "C", 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'S', 'Y', 'Z', '#']
             },
             indexItemHeight: {
                 type: Number,
                 default: 20
             },
-            itemCount: {
-                type: Number,
-                default: 3
-            },
         },
         mounted(){
 
-            let indexmarginTop=(this.$refs.wkindexlistwrap.clientHeight-this.$refs.index_list_items_wrap.clientHeight)/2;
+            let indexmarginTop = (this.$refs.wkindexlistwrap.clientHeight - this.$refs.index_list_items_wrap.clientHeight) / 2;
 
             this.$refs.index_list_items_wrap.addEventListener('touchstart', (e) => {
-                this.currentPosition = Math.ceil((e.touches[0].clientY-indexmarginTop)/this.indexItemHeight);
-                if(this.currentPosition>=1){
-                    this.showPosition=true;
+                this.currentPosition = Math.ceil((e.touches[0].clientY - indexmarginTop) / this.indexItemHeight);
+                if (this.currentPosition >= 1) {
+                    this.showPosition = true;
                     this.scrollToTarget();
                 }
             }, false)
             this.$refs.index_list_items_wrap.addEventListener('touchend', (e) => {
-                this.showPosition=false;
+                this.showPosition = false;
             }, false)
             this.$refs.index_list_items_wrap.addEventListener('touchmove', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                this.currentPosition = Math.ceil((e.touches[0].clientY-indexmarginTop)/this.indexItemHeight);
-                if(this.currentPosition>=this.indexs.length){
-                    this.currentPosition=this.indexs.length;
-                }else if(this.currentPosition<1){
-                    this.currentPosition=1;
+                this.currentPosition = Math.ceil((e.touches[0].clientY - indexmarginTop) / this.indexItemHeight);
+                if (this.currentPosition >= this.indexs.length) {
+                    this.currentPosition = this.indexs.length;
+                } else if (this.currentPosition < 1) {
+                    this.currentPosition = 1;
                 }
                 this.scrollToTarget();
             }, false)

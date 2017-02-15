@@ -8,8 +8,8 @@
 
 </style>
 <script>
-    import  PickerWrapper from './pickerWrapper.vue'
-    import  PickerItem from './pickerItem.vue'
+    import  {PickerWrapper,PickerItem } from 'components'
+
 
     export default{
         methods: {

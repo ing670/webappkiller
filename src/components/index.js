@@ -5,9 +5,9 @@ import IconText from './icontext';
 import HeaderBar from './header';
 import Icon from './icon';
 import {Button} from './button';
+import { PickerItem,PickerWrapper} from './picker';
 import InfiniteLoader from './infiniteloader';
 import PullToLoadMore from './pulltoloadmore';
-
 import Toast from './toast.vue'
 import Switcher from './forms/switch.vue'
 import Range from './forms/range.vue'
@@ -28,6 +28,9 @@ import BottomNav from './bottomnav/BottomNav'
 import BottomNavItem from './bottomnav/BottomNavItem.vue'
 import Popup from './popup/popup.vue'
 import App from './app'
+import IndexList from './indexList.vue'
+
+
 
 
 export default {};
@@ -62,4 +65,8 @@ export {
     IconText,
     HeaderBar,
     PullToLoadMore,
+    PickerWrapper,
+    PickerItem,
+    IndexList
+
 };
