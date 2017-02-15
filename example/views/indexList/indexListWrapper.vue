@@ -36,7 +36,8 @@
                 padding: 0 .20rem;
                 height: .72rem;
                 line-height: .72rem;
-                background: #4caf50;
+                background: #000;
+                color: white;
                 font-size: .28rem;
 
             }
@@ -64,7 +65,8 @@
             height: 1rem;
             line-height: 1rem;
             text-align: center;
-            background: rgba(245, 245, 220, 0.88);
+            background: rgba(0, 0, 0, 1);
+            color: white;
             font-size: .48rem;
         }
     }
@@ -95,36 +97,37 @@
                 type: Object,
                 default:{
                     A:['a','A','AA','AAA'],
-                    B:[],
+                    B:["B"],
                     C:['Ca','CA','CAA','CAAA'],
-                    D:['a','A','AA','AAA'],
-                    E:['a','A','AA','AAA'],
-                    F:['a','A','AA','AAA'],
-                    G:['a','A','AA','AAA'],
-                    H:['a','A','AA','AAA'],
-                    I:['a','A','AA','AAA'],
-                    J:['a','A','AA','AAA'],
-                    K:['a','A','AA','AAA'],
-                    L:['a','A','AA','AAA'],
-                    M:['a','A','AA','AAA'],
-                    N:['a','A','AA','AAA'],
-                    O:['a','A','AA','AAA'],
-                    P:['a','A','AA','AAA'],
-                    Q:['a','A','AA','AAA'],
-                    R:['a','A','AA','AAA'],
-                    S:['a','A','AA','AAA'],
-                    T:['a','A','AA','AAA'],
-                    U:['a','A','AA','AAA'],
-                    V:['a','A','AA','AAA'],
-                    W:['a','A','AA','AAA'],
-                    X:['a','A','AA','AAA'],
-                    Y:['a','A','AA','AAA'],
-                    Z:['a','A','AA','AAA']
+                    D:['Da','DA','DAA','DAAA'],
+                    E:['Ea','EA','EAA','EAAA'],
+                    F:['Fa','FA','FAA','FAAA'],
+                    G:['Ga','GA','GAA','GAAA'],
+                    H:['Ha','HA','HAA','HAAA'],
+                    I:['Ia','IA','IAA','IAAA'],
+                    J:['Ja','JA','JAA','JAAA'],
+                    K:['Ka','KA','KAA','KAAA'],
+                    L:['La','LA','LAA','LAAA'],
+                    M:['Ma','MA','MAA','MAAA'],
+                    N:['Na','NA','NAA','NAAA'],
+                    O:['Oa','OA','OAA','OAAA'],
+                    P:['Pa','PA','PAA','PAAA'],
+                    Q:['Qa','QA','QAA','QAAA'],
+                    R:['Ra','RA','RAA','RAAA'],
+                    S:['Sa','SA','SAA','SAAA'],
+                    T:['Ta','TA','TAA','TAAA'],
+                    U:['Ua','UA','UAA','UAAA'],
+                    V:[],
+                    W:['Wa','WA','WAA','WAAA'],
+                    X:['Xa','XA','XAA','XAAA'],
+                    Y:['Ya','YA','YAA','YAAA'],
+                    Z:['Za','ZA','ZAA','ZAAA'],
+                    "#":["1"]
                 }
             },
             indexs: {
                 type: Array,
-                default: ['A', 'B', "C", 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'S', 'Y', 'Z']
+                default: ['A', 'B', "C", 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'S', 'Y', 'Z','#']
             },
             indexItemHeight: {
                 type: Number,
