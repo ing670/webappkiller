@@ -4,7 +4,15 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
-
+// const scrollBehavior = (to, from, savedPosition) => {
+//     if (savedPosition) {
+//         // savedPosition is only available for popstate navigations.
+//         return savedPosition
+//     } else {
+//         const position = {x:0,y:0}
+//         return position
+//     }
+// }
 
 const router = new VueRouter({
     mode: 'hash',
@@ -42,5 +50,7 @@ const router = new VueRouter({
         {path: '/bottomnav', component: () => System.import('../views/bottomNav.vue')},
         {path: '/pop', component: () => System.import('../views/popup.vue')},
     ],
+    //scrollBehavior,
+
 });
 export default router;

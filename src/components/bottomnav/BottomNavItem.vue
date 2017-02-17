@@ -1,13 +1,14 @@
 <template>
     <a href="javascript:;" class="wk-bottom-nav-item" :class="{'active': show}" @click="onClick()">
         <slot>
-            <icon :value="icon"></icon>
+            <icon class="wk-bottom-nav-item-text"></icon>
             <div class="wk-bottom-nav-item-text">{{title}}</div>
         </slot>
     </a>
 </template>
 
 <script>
+    import  Icon from '../icon'
     export default {
         props: {
             icon: {
@@ -50,7 +51,7 @@
                 }
             }
         },
-        components: {}
+        components: {Icon}
     }
 </script>
 
@@ -71,7 +72,8 @@
         .active-highlight();
 
         &.active {
-            color: red;
+            color: white;
+            background: #000;
             .wk-bottom-nav-item-text {
                 font-size: .32rem;
             }
@@ -80,8 +82,6 @@
             font-size: .32rem;
             transition: color 0.3s, font-size 0.3s;
         }
-        .icon {
-            transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-        }
+
     }
 </style>

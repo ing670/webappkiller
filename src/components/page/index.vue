@@ -3,7 +3,7 @@
         <div class="wk-header">
             <slot name='header'></slot>
         </div>
-        <div class="wk-content">
+        <div ref='content'  class="wk-content wk-scroll-content">
             <slot></slot>
         </div>
         <div class="wk-footer">
@@ -64,6 +64,7 @@
 <script>
     import Overlay from 'components/overlay'
     import Circular from 'components/circular'
+    import {getEID} from 'components/utils'
     //默认情况下，showtime=0，closeTIme=0，但是绑定数据之后，closeTime 就等于1了
     export default{
         props: {
@@ -76,6 +77,7 @@
             return {
                 showTime: 0,
                 closeTime: 0,
+                scrollPosition:0
             }
         },
         computed: {
@@ -85,9 +87,6 @@
                 } else {
                     this.closeTime++
                 }
-//                console.log('this.showTime==>'+this.showTime)
-//                console.log('this.closeTime==>'+this.closeTime)
-
                 if (this.showTime > this.closeTime) {
                     return true;
                 } else {
@@ -95,15 +94,12 @@
                 }
             }
         },
-//        watch:{
-//            loading (n,o){
-//                if(n==true) this.showTime++;
-//                console.log(this.showTime);
-//                if(n==false) this.closeTime++;
-//                console.log(this.closeTime);
-//
-//            }
-//        },
+        methods:{
+          recordPosition(e){
+              this.scrollPosition=e.currentTarget.scrollTop;
+          }
+        },
+
         components: {
             Overlay, Circular
         }

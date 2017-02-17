@@ -1,17 +1,19 @@
 <template>
-    <Page>
+        <Page>
 
-        <header-bar slot="header" title="webappkiller" right-text="" right-icon=""></header-bar>
-        <cell
-                class="wk-cell-padding"
-                v-for="item in cellList"
-                :title="item.title"
-                :value="item.value"
-                @onLink="$router.push(item.link)">
-            <Icon slot="startIcon" size=".48rem" :iconColor="item.startIconColor" :fontCode="item.startIconCode"></Icon>
-            <Icon slot="endIcon" size=".48rem" iconColor="#000" fontCode="e5c8"></Icon>
-        </cell>
-    </Page>
+            <header-bar slot="header" title="webappkiller" right-text="" right-icon=""></header-bar>
+                <cell
+                        class="wk-cell-padding"
+                        v-for="item in cellList"
+                        :title="item.title"
+                        :value="item.value"
+                        @onLink="$router.push(item.link)">
+                    <Icon slot="startIcon" size=".48rem" :iconColor="item.startIconColor"
+                          :fontCode="item.startIconCode"></Icon>
+                    <Icon slot="endIcon" size=".48rem" iconColor="#000" fontCode="e5c8"></Icon>
+                </cell>
+        </Page>
+
 </template>
 <script>
 
@@ -21,7 +23,10 @@
     import Ripple  from 'components/helpers/ripple';
     import Cell  from 'components/cell';
     import Page  from 'components/page';
+    import {recordPosition}  from 'components/minxins';
+
     export default {
+        mixins:[recordPosition],
         data() {
             return {
                 cellList: [
@@ -101,6 +106,8 @@
             Ripple,
             HeaderBar
         },
+        mounted(){
+        }
     };
 </script>
 <style lang="less" type="text/less" rel="stylesheet/less">
