@@ -90,14 +90,6 @@
         mounted(){
             //
             //找到选中的第几个
-//            this.indexSelected = this.values.indexOf(this.valueSelected);
-//            if(this.indexSelected==-1){
-//                this.indexSelected=0;
-//            }
-//            this.scrollPosition = (this.pullMax - (this.indexSelected * this.itemHeight))
-//            this.$refs.wkpickerslot.style.webkitTransform = 'translate3d(0,' + this.scrollPosition + 'px,0)';
-//            this.valueSelected=this.values[this.indexSelected]
-//            this.onSelected(this);
             this.scrollToValue(this.valueSelected);
             let itemsLength = (this.values.length -1) * this.itemHeight;
             let itemWrapperHeight = this.itemHeight * this.itemCount;
