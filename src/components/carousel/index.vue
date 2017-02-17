@@ -64,7 +64,7 @@
                 //自动播放
                 this.timer = setInterval(()=>{
                     if(!this.isTouch){
-                        this.distance -= this.mainWidth; //这里的220需要灵活配置
+                        this.distance -= this.mainWidth;
 
                         if(this.distance <= this.maxWidth*(-1)){
                             this.distance = 0;
@@ -98,7 +98,7 @@
             this.startX = 0;
             this.distance = 0;    //用来记录上一次偏移量
             this.isTouch = false;    //是否正处于触摸状态
-            this.maxWidth =  num * this.mainWidth; //暂时220一张图
+            this.maxWidth =  num * this.mainWidth;  //包裹图片集合的父容器宽度
             this.currentIndex = 1; //当前显示第几张图
 
             this.addActive(this.currentIndex);
