@@ -10,18 +10,6 @@
                 </div>
             </div>
         </ScrollView>
-        <!--<div ref="wk_index_list_left_wrap" @scroll="recordPosition" class="wk-index-data-list-wrap">-->
-            <!--<div v-for="i in indexs"  class="wk-index-data-wrap" v-show="listData[i].length>0">-->
-                <!--<div class="wk-index-data-title">-->
-                    <!--{{i}}-->
-                <!--</div>-->
-                <!--<div v-for="it in listData[i]" class="wk-index-data-content" @click="itemClick(it)">-->
-                    <!--{{it}}-->
-                <!--</div>-->
-            <!--</div>-->
-
-        <!--</div>-->
-
         <div ref="index_list_items_wrap" class="wk-index-list">
             <div ref="index_list_items" class="wk-index-list-item" v-for="i in indexs"
                  :style="{'height':indexItemHeight+'px','line-height':indexItemHeight+'px'}">{{i}}
@@ -97,11 +85,12 @@
             },
             scrollToTarget(){
                 let scroll = 0;
-                if (this.listData[this.indexs[this.currentPosition - 1]].length > 0 && this.currentPosition - 1 <= this.$refs.wk_index_list_left_wrap.children.length) {
+                console.log(this.$refs.wk_index_list_left_wrap);
+                if (this.listData[this.indexs[this.currentPosition - 1]].length > 0 && this.currentPosition - 1 <= this.$refs.wk_index_list_left_wrap.$el.children.length) {
                     for (let i = 0; i < this.currentPosition - 1; i++) {
-                        scroll += this.$refs.wk_index_list_left_wrap.children[i].clientHeight
+                        scroll += this.$refs.wk_index_list_left_wrap.$el.children[i].clientHeight
                     }
-                    this.$refs.wk_index_list_left_wrap.scrollTop = scroll;
+                    this.$refs.wk_index_list_left_wrap.$el.scrollTop = scroll;
                 }
 
             }
