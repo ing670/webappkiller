@@ -45,7 +45,6 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #fff;
     height: .96rem;
     border-bottom:1px solid #eee;
     padding-left: .30rem;
