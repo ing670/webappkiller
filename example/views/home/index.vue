@@ -91,7 +91,7 @@
                         link: '/form',
                     },
                     {
-                        title: 'Cell',
+                        title: '局部滚动(可以记录滚动位置)',
                         link: '/cell',
                     },
                     {

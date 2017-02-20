@@ -65,8 +65,6 @@
         created(){
                this.$route.meta.scrollviewCount=this.$route.meta.scrollviewCount+1;
                this.index=this.$route.meta.scrollviewCount;
-
-
         },
         positions:[],
         methods: {
