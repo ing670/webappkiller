@@ -85,7 +85,6 @@
             },
             scrollToTarget(){
                 let scroll = 0;
-                console.log(this.$refs.wk_index_list_left_wrap);
                 if (this.listData[this.indexs[this.currentPosition - 1]].length > 0 && this.currentPosition - 1 <= this.$refs.wk_index_list_left_wrap.$el.children.length) {
                     for (let i = 0; i < this.currentPosition - 1; i++) {
                         scroll += this.$refs.wk_index_list_left_wrap.$el.children[i].clientHeight
