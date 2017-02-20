@@ -1,8 +1,8 @@
 <template>
     <Page>
         <HeaderBar slot="header" title="轮播图" leftFontCode="e5c4" @onLeft="back"></HeaderBar>
-        <!--<router-link to="/cell/abc">Go to Foo</router-link>-->
-        <!--<router-view></router-view>-->
+
+        <ScrollView>
         <div class="carousel-example-item" style="width: 330px;margin:0 auto">
             <p>轮播图---自动轮播</p>
             <carousel :value="itemdata" :auto_play="true"></carousel>
@@ -17,10 +17,11 @@
             <p>轮播图---手动设置轮播区域大小(100x100),轮播时间(毫秒)</p>
             <carousel :value="itemdata" :auto_play="true" :auto_time="1000" :w="100" :h="100"></carousel>
         </div>
+        </ScrollView>
     </Page>
 </template>
 <script>
-    import {Carousel, Page, HeaderBar} from 'components';
+    import {Carousel, Page, HeaderBar,ScrollView} from 'components';
     import Image1 from '../../static/img/111.jpg';
     import Image2 from '../../static/img/222.jpg';
     import Image3 from '../../static/img/333.jpg';
@@ -47,7 +48,7 @@
           }
         },
         components: {
-            Carousel, Page, HeaderBar
+            Carousel, Page, HeaderBar,ScrollView
         },
     };
 </script>

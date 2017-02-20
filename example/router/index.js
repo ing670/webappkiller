@@ -14,22 +14,17 @@ Vue.use(VueRouter);
 //     }
 // }
 
+import IndexListView from "../views/indexList"
+import Picker from "../views/picker"
 const router = new VueRouter({
     mode: 'hash',
     routes: [
         {
             path: '/indexlist',
-            component: () => System.import("../views/indexList"),
-            children: [
-                {
-                    path: 'abc',
-                    component: () => System.import('../views/grid')
-                }
-            ]
-
+            component: IndexListView,
         },
 
-        {path: '/picker', component: () => System.import("../views/picker")},
+        {path: '/picker', component: Picker},
 
         {path: '/buttons', component: () => System.import("../views/buttons")},
 
