@@ -23,10 +23,8 @@
     import Ripple  from 'components/helpers/ripple';
     import Cell  from 'components/cell';
     import Page  from 'components/page';
-    import {recordPosition}  from 'components/minxins';
 
     export default {
-        mixins:[recordPosition],
         data() {
             return {
                 cellList: [
@@ -107,6 +105,7 @@
             HeaderBar
         },
         mounted(){
+
         }
     };
 </script>

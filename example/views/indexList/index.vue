@@ -18,7 +18,7 @@
                 window.history.back()
             },
             itemClick(data){
-                alert(JSON.stringify(data))
+                this.$router.push('/');
             }
         },
 
@@ -57,6 +57,7 @@
 
         },
         mounted(){
+            console.log(this.constructor.cid)
         },
         components: {
             IndexList,Page,HeaderBar

@@ -3,7 +3,7 @@
         <div class="wk-header">
             <slot name='header'></slot>
         </div>
-        <div ref='content'  class="wk-content wk-scroll-content">
+        <div ref='content'  @scroll="recordPosition" class="wk-content wk-scroll-content">
             <slot></slot>
         </div>
         <div class="wk-footer">
@@ -73,6 +73,7 @@
                 default: false
             }
         },
+        recordPosition:0,
         data(){
             return {
                 showTime: 0,
@@ -96,8 +97,13 @@
         },
         methods:{
           recordPosition(e){
-              this.scrollPosition=e.currentTarget.scrollTop;
+              if(e.currentTarget.scrollTop>0){
+                  this.constructor.recordPosition=e.currentTarget.scrollTop;
+              }
           }
+        },
+        mounted(){
+            this.$el.querySelector('.wk-scroll-content').scrollTop=this.constructor.recordPosition;
         },
 
         components: {

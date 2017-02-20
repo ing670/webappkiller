@@ -17,7 +17,17 @@ Vue.use(VueRouter);
 const router = new VueRouter({
     mode: 'hash',
     routes: [
-        {path: '/indexlist', component: () => System.import("../views/indexList")},
+        {
+            path: '/indexlist',
+            component: () => System.import("../views/indexList"),
+            children: [
+                {
+                    path: 'abc',
+                    component: () => System.import('../views/grid')
+                }
+            ]
+
+        },
 
         {path: '/picker', component: () => System.import("../views/picker")},
 

@@ -1,7 +1,7 @@
 <template>
     <div ref='wkindexlistwrap' class="wk-index-list-wrapper">
-        <div ref="wk_index_list_left_wrap" class="wk-index-data-list-wrap">
-            <div v-for="i in indexs" class="wk-index-data-wrap" v-show="listData[i].length>0">
+        <div ref="wk_index_list_left_wrap" @scroll="recordPosition" class="wk-index-data-list-wrap">
+            <div v-for="i in indexs"  class="wk-index-data-wrap" v-show="listData[i].length>0">
                 <div class="wk-index-data-title">
                     {{i}}
                 </div>
@@ -80,6 +80,11 @@
             }
         },
         methods: {
+            recordPosition(e){
+                if(e.currentTarget.scrollTop>0){
+                    this.constructor.recordPosition=e.currentTarget.scrollTop;
+                }
+            },
             scrollToTarget(){
                 let scroll = 0;
                 if (this.listData[this.indexs[this.currentPosition - 1]].length > 0 && this.currentPosition - 1 <= this.$refs.wk_index_list_left_wrap.children.length) {
@@ -140,6 +145,7 @@
             },
         },
         mounted(){
+            this.$el.querySelector('.wk-index-data-list-wrap').scrollTop=this.constructor.recordPosition;
 
             let indexmarginTop = (this.$refs.wkindexlistwrap.clientHeight - this.$refs.index_list_items_wrap.clientHeight) / 2;
 
