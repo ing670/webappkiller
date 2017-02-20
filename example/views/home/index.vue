@@ -2,7 +2,8 @@
         <Page>
 
             <header-bar slot="header" title="webappkiller" right-text="" right-icon=""></header-bar>
-                <cell
+            <ScrollView>
+            <cell
                         class="wk-cell-padding"
                         v-for="item in cellList"
                         :title="item.title"
@@ -12,6 +13,7 @@
                           :fontCode="item.startIconCode"></Icon>
                     <Icon slot="endIcon" size=".48rem" iconColor="#000" fontCode="e5c8"></Icon>
                 </cell>
+            </ScrollView>
         </Page>
 
 </template>
@@ -23,6 +25,8 @@
     import Ripple  from 'components/helpers/ripple';
     import Cell  from 'components/cell';
     import Page  from 'components/page';
+    import ScrollView  from 'components/scrollview';
+
 
     export default {
         data() {
@@ -102,7 +106,8 @@
             Cell,
             Icon,
             Ripple,
-            HeaderBar
+            HeaderBar,
+            ScrollView
         },
         mounted(){
 

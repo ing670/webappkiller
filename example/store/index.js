@@ -7,7 +7,7 @@ import createLogger from 'vuex/dist/logger'
 import * as Types from './motations-types'
 Vue.use(Vuex)
 const debug = process.env.NODE_ENV !== 'production'
-const m1 = {
+let m1 = {
   state: {
     count: 0,
     "weatherinfo": {
@@ -37,6 +37,8 @@ const m1 = {
 
   }
 }
+
+
 const store = new Vuex.Store({
 
   modules: {

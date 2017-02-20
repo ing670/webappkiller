@@ -3,8 +3,8 @@
         <div class="wk-header">
             <slot name='header'></slot>
         </div>
-        <div ref='content'  @scroll="recordPosition" class="wk-content wk-scroll-content">
-            <slot></slot>
+        <div ref='content' class="wk-content ">
+                <slot></slot>
         </div>
         <div class="wk-footer">
             <slot name='footer'></slot>
@@ -53,18 +53,13 @@
 
     }
 
-    // 页面平滑滚动
-    .scroll-page {
-        height: 100%;
-        overflow: scroll;
-        -webkit-overflow-scrolling: touch;
-        width: 100%;
-    }
 </style>
 <script>
     import Overlay from 'components/overlay'
     import Circular from 'components/circular'
     import {getEID} from 'components/utils'
+    import ScrollView from 'components/scrollview'
+
     //默认情况下，showtime=0，closeTIme=0，但是绑定数据之后，closeTime 就等于1了
     export default{
         props: {
@@ -73,17 +68,16 @@
                 default: false
             }
         },
-        recordPosition:0,
         data(){
             return {
                 showTime: 0,
                 closeTime: 0,
-                scrollPosition:0
+                scrollPosition: 0
             }
         },
         computed: {
             ishow(){
-                if (this.loading==true) {
+                if (this.loading == true) {
                     this.showTime++
                 } else {
                     this.closeTime++
@@ -95,19 +89,10 @@
                 }
             }
         },
-        methods:{
-          recordPosition(e){
-              if(e.currentTarget.scrollTop>0){
-                  this.constructor.recordPosition=e.currentTarget.scrollTop;
-              }
-          }
-        },
-        mounted(){
-            this.$el.querySelector('.wk-scroll-content').scrollTop=this.constructor.recordPosition;
-        },
+
 
         components: {
-            Overlay, Circular
+            Overlay, Circular, ScrollView
         }
     }
 </script>

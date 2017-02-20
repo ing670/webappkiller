@@ -29,6 +29,8 @@ import BottomNavItem from './bottomnav/BottomNavItem.vue'
 import Popup from './popup/popup.vue'
 import App from './app'
 import IndexList from './indexList.vue'
+import ScrollView from './scrollview'
+
 
 
 
@@ -67,6 +69,7 @@ export {
     PullToLoadMore,
     PickerWrapper,
     PickerItem,
-    IndexList
+    IndexList,
+    ScrollView
 
 };

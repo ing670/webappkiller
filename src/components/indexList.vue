@@ -1,6 +1,6 @@
 <template>
     <div ref='wkindexlistwrap' class="wk-index-list-wrapper">
-        <div ref="wk_index_list_left_wrap" @scroll="recordPosition" class="wk-index-data-list-wrap">
+        <ScrollView ref="wk_index_list_left_wrap"  class="wk-index-data-list-wrap">
             <div v-for="i in indexs"  class="wk-index-data-wrap" v-show="listData[i].length>0">
                 <div class="wk-index-data-title">
                     {{i}}
@@ -9,8 +9,18 @@
                     {{it}}
                 </div>
             </div>
+        </ScrollView>
+        <!--<div ref="wk_index_list_left_wrap" @scroll="recordPosition" class="wk-index-data-list-wrap">-->
+            <!--<div v-for="i in indexs"  class="wk-index-data-wrap" v-show="listData[i].length>0">-->
+                <!--<div class="wk-index-data-title">-->
+                    <!--{{i}}-->
+                <!--</div>-->
+                <!--<div v-for="it in listData[i]" class="wk-index-data-content" @click="itemClick(it)">-->
+                    <!--{{it}}-->
+                <!--</div>-->
+            <!--</div>-->
 
-        </div>
+        <!--</div>-->
 
         <div ref="index_list_items_wrap" class="wk-index-list">
             <div ref="index_list_items" class="wk-index-list-item" v-for="i in indexs"
@@ -31,7 +41,6 @@
         .wk-index-data-list-wrap {
             flex: 1;
             border-right: 1px solid #ddd;
-            overflow-y: scroll;
             .wk-index-data-title {
                 padding: 0 .20rem;
                 height: .72rem;
@@ -72,6 +81,7 @@
     }
 </style>
 <script>
+    import ScrollView from './scrollview'
     export default{
         data(){
             return {
@@ -145,7 +155,7 @@
             },
         },
         mounted(){
-            this.$el.querySelector('.wk-index-data-list-wrap').scrollTop=this.constructor.recordPosition;
+            //this.$el.querySelector('.wk-index-data-list-wrap').scrollTop=this.constructor.recordPosition;
 
             let indexmarginTop = (this.$refs.wkindexlistwrap.clientHeight - this.$refs.index_list_items_wrap.clientHeight) / 2;
 
@@ -171,7 +181,9 @@
                 this.scrollToTarget();
             }, false)
         },
-        components: {}
+        components: {
+            ScrollView
+        }
     }
 
 </script>
