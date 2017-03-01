@@ -38,7 +38,7 @@
             scrollClass(){
                 if (this.scrollY) {
                     return 'scroll-y-view';
-                } else if (this.scrollY) {
+                } else if (this.scrollX) {
                     return 'scroll-x-view';
                 } else {
                     return 'dis-scroll-view';
