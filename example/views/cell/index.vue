@@ -68,8 +68,7 @@
                 <cell title='title'></cell>
                 <cell value='value'></cell>
             </ScrollView>
-            <ScrollView>
-
+            </ScrollView>
     </Page>
 </template>
 <script>
