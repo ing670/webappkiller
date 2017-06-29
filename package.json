@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "cross-env  NODE_ENV=dev node  webpack.dev.server.js",
     "webpack-dev": "cross-env  NODE_ENV=dev webpack-dev-server  --config webpack/example.js  --inline --hot  --port 8888",
-    "build": "rm -rf dist && cross-env NODE_ENV=prod webpack  --config webpack/build.js  --progress --hide-modules"
+    "build": "cross-env NODE_ENV=prod webpack  --config webpack/build.js  --progress --hide-modules"
   },
   "repository": {},
   "keywords": [
@@ -37,6 +37,7 @@
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.10",
     "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-polyfill": "^6.23.0",
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-latest": "^6.16.0",
     "babel-preset-stage-2": "^6.18.0",
