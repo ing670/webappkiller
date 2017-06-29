@@ -33,7 +33,7 @@ server.app.get('/api', function (req, res) {
   });
 
 });
-server.listen(8888,'0.0.0.0',function (err) {
+server.listen(8888,'192.168.1.44',function (err) {
   if(err)
      console.log(err)
 
