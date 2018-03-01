@@ -213,7 +213,8 @@ export default {
     }
   },
   mounted (){
-    this.showCheck()
+    this.showCheck();
+      this.picked();
   },
   methods: {
     prevent (event) {
@@ -229,7 +230,6 @@ export default {
       this.showDay(next)
     },
     showDay (time) {
-
       if (!time) {
         this.checked.currentMoment = moment()
       } else {
@@ -463,6 +463,7 @@ export default {
       } else {
         this.time = JSON.stringify(this.selectedDays)
       }
+      alert(this.time);
       this.$emit('date-select-sure', this.time)
     },
     dismiss () {

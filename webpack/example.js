@@ -138,13 +138,9 @@ if (process.env.NODE_ENV === 'dev') {
         //new webpack.optimize.CommonsChunkPlugin({name: 'example', filename: "[name].js?v=[hash]"}),
         new webpack.optimize.CommonsChunkPlugin({
             name: "vendor",
-            filename: 'vendor_vue.js',
+            filename: 'vendor_vue.[hash].js',
         }),
 
-        new ExtractTextPlugin({
-            filename: "app.css",
-            allChunks: true
-        }),
         // 自动注入 html
         new HtmlWebpackPlugin({
             filename: 'index.html',

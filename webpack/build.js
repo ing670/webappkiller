@@ -30,9 +30,6 @@ if (process.env.NODE_ENV === 'prod') {
             exclude: /node_modules/,
           }
         ],
-        eslint: {
-          configFile: '.eslintrc',
-        },
         vue: {
           loaders: utils.cssLoaders(),
           postcss: [
@@ -43,14 +40,11 @@ if (process.env.NODE_ENV === 'prod') {
         },
       }
     }),
-    new ExtractTextPlugin({
-      filename: "css/app.[contenthash].css?v=[hash]",
-      allChunks: true
-    }),
+
     // 抽离公共js
     new webpack.optimize.CommonsChunkPlugin({
       name: "vendor",
-      filename: 'js/vendor_vue.js',
+      filename: 'js/vendor_vue.[hash]js',
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
